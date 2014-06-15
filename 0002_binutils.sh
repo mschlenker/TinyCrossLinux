@@ -4,6 +4,11 @@ source stage01_variables
 PKGNAME=binutils
 PKGVERSION=2.24
 
+# Download:
+
+[ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2 ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2 \
+	http://ftp.gnu.org/gnu/binutils/${PKGNAME}-${PKGVERSION}.tar.bz2
+
 # Prepare build:
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}

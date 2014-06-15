@@ -4,6 +4,17 @@ source stage01_variables
 PKGNAME=gcc-step1
 PKGVERSION=4.9.0
 
+# Download:
+
+[ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2 ] || wget -O ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2 \
+	http://gcc.cybermirror.org/releases/gcc-${PKGVERSION}.tar.bz2
+[ -f ${SRCDIR}/mpfr-3.1.2.tar.xz ] || wget -O ${SRCDIR}/mpfr-3.1.2.tar.xz \
+	http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz 
+[ -f ${SRCDIR}/gmp-6.0.0a.tar.xz ] || wget -O ${SRCDIR}/gmp-6.0.0a.tar.xz \
+	https://gmplib.org/download/gmp/gmp-6.0.0a.tar.xz
+[ -f ${SRCDIR}/mpc-1.0.2.tar.gz  ] || wget -O ${SRCDIR}/mpc-1.0.2.tar.gz
+	ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.2.tar.gz
+
 # Prepare build:
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}

@@ -4,6 +4,11 @@ source stage01_variables
 PKGNAME=linux-headers
 PKGVERSION=3.15 
 
+# Download
+
+[ -f ${SRCDIR}/linux-${PKGVERSION}.tar.xz ] || wget -O ${SRCDIR}/linux-${PKGVERSION}.tar.xz \
+	https://www.kernel.org/pub/linux/kernel/v3.x/linux-${PKGVERSION}.tar.xz
+
 # Prepare build:
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}

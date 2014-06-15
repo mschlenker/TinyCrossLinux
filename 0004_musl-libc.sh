@@ -4,6 +4,11 @@ source stage01_variables
 PKGNAME=musl
 PKGVERSION=1.1.2
 
+# Download:
+
+[ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz \
+	http://www.musl-libc.org/releases/${PKGNAME}-${PKGVERSION}.tar.gz
+
 # Prepare build:
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
