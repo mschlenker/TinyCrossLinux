@@ -12,7 +12,7 @@ PKGVERSION=4.9.0
 	http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz 
 [ -f ${SRCDIR}/gmp-6.0.0a.tar.xz ] || wget -O ${SRCDIR}/gmp-6.0.0a.tar.xz \
 	https://gmplib.org/download/gmp/gmp-6.0.0a.tar.xz
-[ -f ${SRCDIR}/mpc-1.0.2.tar.gz  ] || wget -O ${SRCDIR}/mpc-1.0.2.tar.gz
+[ -f ${SRCDIR}/mpc-1.0.2.tar.gz  ] || wget -O ${SRCDIR}/mpc-1.0.2.tar.gz \
 	ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.2.tar.gz
 
 # Prepare build:
