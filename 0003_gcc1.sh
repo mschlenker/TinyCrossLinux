@@ -7,7 +7,7 @@ PKGVERSION=4.9.0
 # Download:
 
 [ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2 ] || wget -O ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2 \
-	http://gcc.cybermirror.org/releases/gcc-${PKGVERSION}.tar.bz2
+	http://gcc.cybermirror.org/releases/gcc-${PKGVERSION}/gcc-${PKGVERSION}.tar.bz2
 [ -f ${SRCDIR}/mpfr-3.1.2.tar.xz ] || wget -O ${SRCDIR}/mpfr-3.1.2.tar.xz \
 	http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz 
 [ -f ${SRCDIR}/gmp-6.0.0a.tar.xz ] || wget -O ${SRCDIR}/gmp-6.0.0a.tar.xz \
