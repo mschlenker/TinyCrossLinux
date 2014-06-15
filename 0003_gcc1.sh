@@ -1,0 +1,54 @@
+
+source stage01_variables
+
+PKGNAME=gcc-step1
+PKGVERSION=4.9.0
+
+# Prepare build:
+
+mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
+cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
+tar xvjf ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2
+
+# Build and install
+
+mkdir gcc-build
+cd gcc-${PKGVERSION}
+tar xJf ${SRCDIR}/mpfr-3.1.2.tar.xz
+mv -v mpfr-3.1.2 mpfr
+tar xJf ${SRCDIR}/gmp-6.0.0a.tar.xz
+mv -v gmp-6.0.0 gmp
+tar xf ${SRCDIR}/mpc-1.0.2.tar.gz
+mv -v mpc-1.0.2 mpc
+
+cd ../gcc-build
+../gcc-${PKGVERSION}/configure \
+  --prefix=${CLFS}/cross-tools \
+  --build=${CLFS_HOST} \
+  --host=${CLFS_HOST} \
+  --target=${CLFS_TARGET} \
+  --with-sysroot=${CLFS}/cross-tools/${CLFS_TARGET} \
+  --disable-nls  \
+  --disable-shared \
+  --without-headers \
+  --with-newlib \
+  --disable-decimal-float \
+  --disable-libgomp \
+  --disable-libmudflap \
+  --disable-libssp \
+  --disable-libatomic \
+  --disable-libquadmath \
+  --disable-threads \
+  --enable-languages=c \
+  --disable-multilib \
+  --with-mpfr-include=$(pwd)/../gcc-${PKGVERSION}/mpfr/src \
+  --with-mpfr-lib=$(pwd)/mpfr/src/.libs \
+  --with-arch=${CLFS_CPU}
+
+make all-gcc all-target-libgcc
+make install-gcc install-target-libgcc
+
+# Clean up
+
+rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/gcc-${PKGVERSION} ${CLFS}/build/${PKGNAME}-${PKGVERSION}/gcc-build 
+
