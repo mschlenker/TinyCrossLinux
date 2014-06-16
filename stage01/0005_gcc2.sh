@@ -2,7 +2,7 @@
 source stage01_variables
 
 PKGNAME=gcc-step2
-PKGVERSION=4.9.0
+PKGVERSION=4.7.4
 
 # Prepare build:
 
@@ -14,6 +14,7 @@ tar xvjf ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2
 
 mkdir gcc-build
 cd gcc-${PKGVERSION}
+cat ${SRCDIR}/gcc-4.7.3-musl-1.patch | patch -p1
 tar xJf ${SRCDIR}/mpfr-3.1.2.tar.xz
 mv -v mpfr-3.1.2 mpfr
 tar xJf ${SRCDIR}/gmp-6.0.0a.tar.xz
