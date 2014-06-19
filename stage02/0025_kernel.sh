@@ -27,6 +27,7 @@ mv ${PKGNAME}-3.15 ${PKGNAME}-${PKGVERSION}
 # Build and install
 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
+localversion=` grep '^CONFIG_LOCALVERSION' .config | sed 's/"//g' | awk -F '=' '{print $2}' `
 make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-musl- oldconfig
 make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-musl-
 INSTALL_MOD_PATH=${CLFS}/targetfs make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-musl- modules_install
