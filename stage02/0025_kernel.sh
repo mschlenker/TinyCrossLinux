@@ -20,7 +20,7 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvJf ${SRCDIR}/${PKGNAME}-3.15.tar.xz
 cd ${PKGNAME}-3.15
 unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
-cp -v "${wdir}/patches/config-3.15.1 .config
+cp -v "${wdir}/patches/config-3.15.1" .config
 cd ..
 mv ${PKGNAME}-3.15 ${PKGNAME}-${PKGVERSION}
 
