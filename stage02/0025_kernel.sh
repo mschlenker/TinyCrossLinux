@@ -33,6 +33,7 @@ make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-musl-
 INSTALL_MOD_PATH=${CLFS}/targetfs make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-musl- modules_install
 mkdir -p ${CLFS}/targetfs/boot
 install -m 0644 arch/x86/boot/bzImage ${CLFS}/targetfs/boot/vmlinuz-${PKGVERSION}${localversion}
+find ${CLFS}/targetfs/lib/modules/${PKGVERSION}${localversion} -type f -name '*.ko' -exec x86_64-linux-musl-strip --strip-unneeded {} \; 
 
 # Clean up
 
