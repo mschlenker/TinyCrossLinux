@@ -15,7 +15,7 @@ PKGVERSION=3.15.5
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
-tar xvJf ${SRCDIR}/linux-3.15.tar.xz
+tar xvJf ${SRCDIR}/linux-3.15.tar.xz || exit 1
 cd linux-3.15
 unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
 mv linux-3.15 linux-${PKGVERSION}
@@ -23,9 +23,9 @@ mv linux-3.15 linux-${PKGVERSION}
 # Build and install
 
 cd linux-${PKGVERSION}
-make mrproper
+make mrproper || exit 1
 make ARCH=${CLFS_ARCH} headers_check
-make ARCH=${CLFS_ARCH} INSTALL_HDR_PATH=${CLFS}/cross-tools/${CLFS_TARGET} headers_install
+make ARCH=${CLFS_ARCH} INSTALL_HDR_PATH=${CLFS}/cross-tools/${CLFS_TARGET} headers_install || exit 1
 
 # Clean up
 

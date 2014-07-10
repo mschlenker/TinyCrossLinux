@@ -39,8 +39,8 @@ cd ../gcc-build
   --with-mpfr-lib=$(pwd)/mpfr/src/.libs \
   --with-arch=${CLFS_CPU}
 
-make 
-make install
+make || exit 1
+make install || exit 1
 
 # Clean up
 

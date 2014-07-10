@@ -59,8 +59,8 @@ cd ../gcc-build
   --with-mpfr-lib=$(pwd)/mpfr/src/.libs \
   --with-arch=${CLFS_CPU}
 
-make all-gcc all-target-libgcc
-make install-gcc install-target-libgcc
+make all-gcc all-target-libgcc || exit 1
+make install-gcc install-target-libgcc || exit 1
 
 # Clean up
 

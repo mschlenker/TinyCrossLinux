@@ -26,8 +26,8 @@ cd ${PKGNAME}-build
    --disable-nls \
    --disable-multilib
 make configure-host
-make
-make install
+make || exit 1
+make install || exit 1
 
 # Clean up
 

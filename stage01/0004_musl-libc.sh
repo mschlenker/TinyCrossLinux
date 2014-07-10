@@ -23,8 +23,8 @@ CC=${CLFS_TARGET}-gcc \
 ./configure \
   --prefix=/ \
   --target=${CLFS_TARGET}
-CFLAGS=-fno-toplevel-reorder CC=${CLFS_TARGET}-gcc make
-DESTDIR=${CLFS}/cross-tools/${CLFS_TARGET} make install
+CFLAGS=-fno-toplevel-reorder CC=${CLFS_TARGET}-gcc make || exit 1
+DESTDIR=${CLFS}/cross-tools/${CLFS_TARGET} make install || exit 1
 
 # Clean up
 
