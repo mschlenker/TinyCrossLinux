@@ -24,7 +24,7 @@ make defconfig
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/linux-kvm/tools/kvm
 make clean
 make WERROR=0 CROSS_COMPILE=x86_64-linux-musl-
-install -m 0755 lkvm ${CLFS}/targetfs/usr/bin
+install -m 0755 lkvm ${CLFS}/targetfs/usr/bin || exit 1 
 
 # Clean up
 

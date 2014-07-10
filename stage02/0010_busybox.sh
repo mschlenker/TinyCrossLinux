@@ -22,9 +22,9 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 ARCH="${CLFS_ARCH}" make defconfig
 sed -i 's/\(CONFIG_\)\(.*\)\(INETD\)\(.*\)=y/# \1\2\3\4 is not set/g' .config
 sed -i 's/\(CONFIG_IFPLUGD\)=y/# \1 is not set/' .config
-ARCH="${CLFS_ARCH}" CROSS_COMPILE="${CLFS_TARGET}-" make
+ARCH="${CLFS_ARCH}" CROSS_COMPILE="${CLFS_TARGET}-" make || exit 1
 ARCH="${CLFS_ARCH}" CROSS_COMPILE="${CLFS_TARGET}-" make  \
-  CONFIG_PREFIX="${CLFS}/targetfs" install
+  CONFIG_PREFIX="${CLFS}/targetfs" install || exit 1 
 
 # Clean up
 

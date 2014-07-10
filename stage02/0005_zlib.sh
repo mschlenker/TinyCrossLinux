@@ -20,8 +20,8 @@ tar xvJf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz
 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 CFLAGS="-Os" ./configure --shared
-make 
-make prefix=${CLFS}/cross-tools/${CLFS_TARGET} install
+make || exit 1
+make prefix=${CLFS}/cross-tools/${CLFS_TARGET} install || exit 1
 
 # Clean up
 
