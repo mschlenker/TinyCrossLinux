@@ -30,13 +30,13 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 localversion=` grep '^CONFIG_LOCALVERSION' .config | sed 's/"//g' | awk -F '=' '{print $2}' `
 make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-musl- oldconfig
 make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-musl-
-INSTALL_MOD_PATH=${CLFS}/targetfs make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-musl- modules_install
+INSTALL_MOD_PATH=${CLFS}/targetfs make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-musl- modules_install || exit 1 
 mkdir -p ${CLFS}/targetfs/boot
-install -m 0644 arch/x86/boot/bzImage ${CLFS}/targetfs/boot/vmlinuz-${PKGVERSION}${localversion}
+install -m 0644 arch/x86/boot/bzImage ${CLFS}/targetfs/boot/vmlinuz-${PKGVERSION}${localversion} || exit 1
 find ${CLFS}/targetfs/lib/modules/${PKGVERSION}${localversion} -type f -name '*.ko' -exec x86_64-linux-musl-strip --strip-unneeded {} \; 
 
 # Clean up
 
 cd ${CLFS}
-# rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
+rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 
