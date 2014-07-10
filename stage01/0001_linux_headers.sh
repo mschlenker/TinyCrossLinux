@@ -7,7 +7,7 @@ PKGVERSION=3.15.5
 # Download
 
 [ -f ${SRCDIR}/linux-3.15.tar.xz ] || wget -O ${SRCDIR}/linux-3.15.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v3.x/linux-${PKGVERSION}.tar.xz
+	https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.15.tar.xz
 [ -f ${SRCDIR}/linux-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
 	https://www.kernel.org/pub/linux/kernel/v3.x/patch-${PKGVERSION}.xz
 
