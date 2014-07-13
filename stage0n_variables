@@ -1,0 +1,3 @@
+
+CLFS=/mnt/archiv/CrossLinux
+SRCDIR=${CLFS}/src

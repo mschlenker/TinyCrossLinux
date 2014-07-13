@@ -1,4 +1,5 @@
 
+source stage0n_variables
 source stage01_variables
 
 PKGNAME=musl

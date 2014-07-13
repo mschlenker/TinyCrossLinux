@@ -1,4 +1,5 @@
 
+source stage0n_variables
 source stage01_variables
 
 PKGNAME=linux-headers
@@ -8,7 +9,7 @@ PKGVERSION=3.15.5
 
 [ -f ${SRCDIR}/linux-3.15.tar.xz ] || wget -O ${SRCDIR}/linux-3.15.tar.xz \
 	https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.15.tar.xz
-[ -f ${SRCDIR}/linux-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
+[ -f ${SRCDIR}/patch-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
 	https://www.kernel.org/pub/linux/kernel/v3.x/patch-${PKGVERSION}.xz
 
 # Prepare build:
@@ -18,6 +19,7 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvJf ${SRCDIR}/linux-3.15.tar.xz || exit 1
 cd linux-3.15
 unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
+cd ..
 mv linux-3.15 linux-${PKGVERSION}
 
 # Build and install
@@ -29,5 +31,6 @@ make ARCH=${CLFS_ARCH} INSTALL_HDR_PATH=${CLFS}/cross-tools/${CLFS_TARGET} heade
 
 # Clean up
 
+cd ..
 rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/linux-${PKGVERSION}
 

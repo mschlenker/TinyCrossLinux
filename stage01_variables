@@ -1,6 +1,4 @@
 
-CLFS=/mnt/archiv/CrossLinux
-SRCDIR=${CLFS}/src
 umask 022
 LC_ALL=POSIX
 PATH=${CLFS}/cross-tools/bin:/bin:/usr/bin

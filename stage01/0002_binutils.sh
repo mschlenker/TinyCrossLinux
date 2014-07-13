@@ -1,4 +1,5 @@
 
+source stage0n_variables
 source stage01_variables
 
 PKGNAME=binutils
@@ -31,5 +32,7 @@ make install || exit 1
 
 # Clean up
 
+cd ../..
 rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
+rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-build
 

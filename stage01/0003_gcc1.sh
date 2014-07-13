@@ -1,4 +1,5 @@
 
+source stage0n_variables
 source stage01_variables
 
 PKGNAME=gcc-step1
@@ -64,5 +65,7 @@ make install-gcc install-target-libgcc || exit 1
 
 # Clean up
 
-rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/gcc-${PKGVERSION} ${CLFS}/build/${PKGNAME}-${PKGVERSION}/gcc-build 
+cd ..
+rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/gcc-${PKGVERSION}
+rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/gcc-build 
 

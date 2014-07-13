@@ -1,3 +1,6 @@
+#!/bin/bash
+
+source stage0n_variables
 
 for n in stage02/[0-9][0-9][0-9][0-9]*.sh ; do 
 	echo '===> BUILDING '"$n"
@@ -10,4 +13,5 @@ for n in stage02/[0-9][0-9][0-9][0-9]*.sh ; do
 		echo '---> DONE '"$n"
 	fi
 done
+
 
