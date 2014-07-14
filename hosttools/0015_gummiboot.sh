@@ -1,13 +1,13 @@
 
 source stage0n_variables
 
-PKGNAME=xorriso
-PKGVERSION=1.3.8
+PKGNAME=gummiboot
+PKGVERSION=45
 
 # Download
  
 [ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz \
-	http://www.gnu.org/software/xorriso/${PKGNAME}-${PKGVERSION}.tar.gz
+	http://cgit.freedesktop.org/gummiboot/snapshot/${PKGNAME}-${PKGVERSION}.tar.gz
 
 # Prepare build:
 
@@ -17,7 +17,8 @@ tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION} -xvzf ${SRCDIR}/${PKGNAME}-${PKGVE
 # Build and install
 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
-./configure --prefix=${CLFS}/hosttools --enable-static
+bash autogen.sh
+./configure --prefix=${CLFS}/hosttools
 make || exit 1
 make install || exit 1
 

@@ -27,11 +27,10 @@ mv linux-3.15 linux-${PKGVERSION}
 cd linux-${PKGVERSION}
 make mrproper || exit 1
 make ARCH=${CLFS_ARCH} headers_check
-mkdir -p ${CLFS}/cross-tools/${CLFS_TARGET}
+mkdir -p ${CLFS}/cross-tools/${CLFS_TARGET} || exit 1
 make ARCH=${CLFS_ARCH} INSTALL_HDR_PATH=${CLFS}/cross-tools/${CLFS_TARGET} headers_install || exit 1
 
 # Clean up
 
 cd ..
 rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/linux-${PKGVERSION}
-
