@@ -26,6 +26,7 @@ sed -i 's/\(CONFIG_IFPLUGD\)=y/# \1 is not set/' .config
 ARCH="${CLFS_ARCH}" CROSS_COMPILE="${CLFS_TARGET}-" make || exit 1
 ARCH="${CLFS_ARCH}" CROSS_COMPILE="${CLFS_TARGET}-" make  \
   CONFIG_PREFIX="${CLFS}/targetfs" install || exit 1 
+ln -sf bin/busybox ${CLFS}/targetfs/init
 
 # Clean up
 
