@@ -11,10 +11,9 @@ mountpoint -q /dev     || mount -t devtmpfs devtmpfs /dev
 mkdir -p /dev/pts
 mkdir -p /dev/shm
 mkdir -p /dev/mapper
-mountpoint -q /proc    || mount -t proc none /proc
 mkdir -p /sys
 mountpoint -q /sys     || mount -t sysfs sysfs /sys
-mountpoint -q /dev/pts || mount -t devpts devpts -o rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 /dev/pts
+mountpoint -q /dev/pts || mount -t devpts -o rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 devpts /dev/pts
 mountpoint -q /dev/shm || mount -t tmpfs devshm /dev/shm
 
 for i in /etc/rc.d/[0-9][0-9][0-9][0-9]-*.?? ; do
