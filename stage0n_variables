@@ -1,3 +1,6 @@
 
 CLFS=/mnt/archiv/CrossLinux
 SRCDIR=${CLFS}/src
+export CLFS_TARGET=x86_64-linux-musl 
+export CLFS_CPU=k8
+export CLFS_ARCH="x86"

@@ -5,8 +5,4 @@ PATH=${CLFS}/cross-tools/bin:/bin:/usr/bin
 export CLFS LC_ALL PATH
 unset CFLAGS
 export CLFS_HOST=$(echo ${MACHTYPE} | sed "s/-[^-]*/-cross/")
-export CLFS_TARGET=x86_64-linux-musl 
-export CLFS_CPU=k8
-export CLFS_ARCH="x86"
-
 

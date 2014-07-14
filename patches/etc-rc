@@ -3,6 +3,7 @@
 PATH=/static/bin:/static/sbin:/bin:/sbin:/usr/bin:/usr/sbin
 export PATH
 
+mkdir /proc
 mountpoint -q /proc    || mount -t proc none /proc
 ln -sf /proc/mounts /etc/mtab
 touch /etc/fstab
