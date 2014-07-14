@@ -3,7 +3,7 @@
 source stage0n_variables
 
 mkdir -p ${CLFS}/build 
-mkdir -p ${CLFS}/cross-tools/${CLFS_TARGET}
+mkdir -p ${CLFS}/cross-tools
 mkdir -p ${SRCDIR}
 
 for n in stage01/[0-9][0-9][0-9][0-9]*.sh ; do 
