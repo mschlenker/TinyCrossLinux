@@ -1,10 +1,9 @@
 ::sysinit:/etc/rc
 tty1::respawn:/bin/ash
-tty2::askfirst:/bin/ash
-tty3::askfirst:/bin/ash
-tty4::respawn:/sbin/getty -l /bin/login 38400 tty2
-tty5::respawn:/sbin/getty -l /bin/login 38400 tty3
+tty2::respawn:/sbin/getty -l /bin/login 38400 tty2
+tty3::respawn:/sbin/getty -l /bin/login 38400 tty3
+tty4::askfirst:/bin/ash
+tty5::askfirst:/bin/ash
 tty6::askfirst:/bin/ash
 ::ctrlaltdel:/sbin/reboot
 ::shutdown:/etc/rc.shutdown
-

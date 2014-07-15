@@ -9,12 +9,8 @@ case $1 in
 	printf "${bold}Starting network... ${normal}\n"
 	succeeded=0
 	for n in 0 1 2 3 4 ; do
-		ifconfig eth${n} up && udhcpc eth${n} && succeeded=1
+		ifconfig eth${n} up
 	done
-	if [ "$succeeded" -gt 0 ] ; then
-		printf "${bold}Starting network ${success} ${normal}\n"
-	else
-		printf "${bold}Starting network ${failed} ${normal}\n"
-	fi
+	udhcpc -S
     ;;
 esac

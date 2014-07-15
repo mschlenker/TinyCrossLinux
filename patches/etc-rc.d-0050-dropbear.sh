@@ -6,8 +6,10 @@ export PATH
 
 case $1 in
     start)
-	printf "${bold}Starting dropbear SSHD ${normal}"
-	[ -f /etc/dropbear/dropbear_ecdsa_host_key ] || dropbearkey -t ecdsa -f /etc/dropbear/dropbear_ecdsa_host_key
-	dropbear && printf "${success}\n" || printf "${failed}\n"
+	printf "${bold}Starting dropbear SSHD... ${normal}"
+	for t in ecdsa rsa dss ; do
+		[ -f /etc/dropbear/dropbear_${t}_host_key ] || dropbearkey -t ${t} -f /etc/dropbear/dropbear_${t}_host_key
+	done
+	dropbear && printf "${bold}Starting dropbear SSHD ${success}\n" || printf "${bold}Starting dropbear SSHD ${failed}\n"
     ;;
 esac

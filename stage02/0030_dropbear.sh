@@ -1,3 +1,4 @@
+#!/bin/bash
 
 source stage0n_variables
 source stage01_variables
