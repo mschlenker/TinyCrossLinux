@@ -7,7 +7,7 @@ case $1 in
     start)
 	kversion=` uname -r `
 	alreadyloaded=""
-	    printf "$bold===> Loading PCI drivers $normal\n"
+	    printf "${bold}Loading PCI drivers ${normal}\n"
 	    for i in /sys/bus/pci/devices/* ; do 
 		prod=` cat $i/device | sed 's/0x//' `
 		vend=` cat $i/vendor | sed 's/0x//' `
@@ -26,7 +26,7 @@ case $1 in
 			    alreadyloaded="$alreadyloaded $modname "
 			fi
 	    done
-	    printf "$bold===> Loading USB drivers $normal\n"
+	    printf "${bold}Loading USB drivers ${normal}\n"
 	    for i in /sys/bus/usb/devices/* ; do 
 		if [ -f $i/idVendor ] ; then
 		    prod=` cat $i/idProduct `
@@ -48,14 +48,6 @@ case $1 in
 		    fi
 	    done   
 	    mountpoint -q /proc/bus/usb || mount -t usbfs usbfs /proc/bus/usb
-	    if cat /sys/hypervisor/properties/capabilities | grep -q xen ; then
-		printf "$bold===> Loading Xen specific drivers $normal \n"
-		modprobe -q -b xen-blkfront
-		modprobe -q -b xen-netfront
-	    fi
 	    mdev -s
-	    for dir in $defmods ; do
-		umount /lib/modules/${kversion}/kernel/${dir}
-	    done
     ;;
 esac
