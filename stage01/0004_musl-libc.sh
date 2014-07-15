@@ -26,8 +26,8 @@ CC=${CLFS_TARGET}-gcc \
   --target=${CLFS_TARGET}
 CFLAGS=-fno-toplevel-reorder CC=${CLFS_TARGET}-gcc make || exit 1
 DESTDIR=${CLFS}/cross-tools/${CLFS_TARGET} make install || exit 1
-${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/cross-tools/${CLFS_TARGET}/lib/*.*o*
-${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/cross-tools/${CLFS_TARGET}/lib64/*.*o*
+${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/cross-tools/${CLFS_TARGET}/lib/*.so*
+${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/cross-tools/${CLFS_TARGET}/lib64/*.so*
 
 # Clean up
 
