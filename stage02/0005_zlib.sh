@@ -23,6 +23,7 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 CFLAGS="-Os" ./configure --shared
 make || exit 1
 make prefix=${CLFS}/cross-tools/${CLFS_TARGET} install || exit 1
+${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/cross-tools/${CLFS_TARGET}/lib/libz.so*
 
 # Clean up
 
