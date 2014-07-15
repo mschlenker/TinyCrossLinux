@@ -1,5 +1,5 @@
 
-CLFS=/mnt/archiv/CrossLinux
+CLFS=/mnt/archiv/TinyCrossBuild
 SRCDIR=${CLFS}/src
 export CLFS_TARGET=x86_64-linux-musl 
 export CLFS_CPU=k8
