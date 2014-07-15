@@ -7,7 +7,7 @@ mkdir -p ${CLFS}/iso/boot/system
 
 # Copy libraries
 echo ${CLFS}/cross-tools/${CLFS_TARGET} ${CLFS}/targetfs 
-tar -C  ${CLFS}/cross-tools/${CLFS_TARGET} --exclude='*.a' --exclude='pkgconfig' -cvf - lib | tar -C ${CLFS}/targetfs -xf - 
+tar -C  ${CLFS}/cross-tools/${CLFS_TARGET} --exclude='*.a' --exclude='pkgconfig' --exclude='ldscripts' -cvf - lib | tar -C ${CLFS}/targetfs -xf - 
 
 # Create the initramfs
 ( cd ${CLFS}/targetfs ; find . | cpio -o -H newc | gzip -c > ../iso/boot/system/initrd.gz )
