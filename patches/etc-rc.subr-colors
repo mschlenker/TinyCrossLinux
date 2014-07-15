@@ -1,0 +1,12 @@
+
+failed='\033[31;1m[FAILED]\033[0m\n'
+success='\033[32;1m[  OK  ]\033[0m\n'
+later='\033[33;1m[LATER ]\033[0m\n'
+bold='\033[1m'
+normal='\033[0m'
+red='\033[31;1m'
+green='\033[32;1m'
+yellow='\033[33;1m'
+blue='\033[34;1m'
+magent='\033[35;1m'
+cyan='\033[36;1m'

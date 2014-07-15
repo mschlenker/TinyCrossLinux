@@ -18,12 +18,14 @@ tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION} -xvjf ${SRCDIR}/${PKGNAME}-${PKGVE
 
 # Build and install
 
+workdir=` pwd ` 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 sed -i 's/.*mandir.*//g' Makefile.in
 CC="${CC} -Os" ./configure --prefix=/usr --host=${CLFS_TARGET}
 make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp" || exit 1
 make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp" install DESTDIR=${CLFS}/targetfs || exit 1
 install -dv ${CLFS}/targetfs/etc/dropbear
+install -m 0755 ${workdir}/patches/etc-rc.d-0050-dropbear.sh ${CLFS}/targetfs/etc/rc.d/0050-dropbear.sh
 
 # Clean up
 
