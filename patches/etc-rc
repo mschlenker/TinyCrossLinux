@@ -24,10 +24,10 @@ done
 printf "${bold}Waiting five seconds for devices to settle... ${normal}\n\n"
 sleep 5
 clear
-printf "${bold}Welcome to ${cyan}EvenLesserLinux${normal}${bold} - Mattias Schlenkers lesson to teach how to\n"
+printf "${bold}Welcome to ${cyan}TinyCrossLinux${normal}${bold} - Mattias Schlenkers lesson to teach how to\n"
 printf "${bold}construct a really compact distribution running from initramfs.\n\n"
 
-printf "${bold}Please consult ${yellow}https://github.com/mschlenker/CrossLinuxFromScratch${normal}\n"
+printf "${bold}Please consult ${yellow}https://github.com/mschlenker/TinyCrossLinux${normal}\n"
 printf "${bold}to obtain the build scripts and further information!\n\n"
 
 printf "${bold}Have fun!${normal}\n"
