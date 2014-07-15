@@ -27,7 +27,7 @@ ARCH="${CLFS_ARCH}" CROSS_COMPILE="${CLFS_TARGET}-" make || exit 1
 ARCH="${CLFS_ARCH}" CROSS_COMPILE="${CLFS_TARGET}-" make  \
   CONFIG_PREFIX="${CLFS}/targetfs" install || exit 1 
 ln -sf bin/busybox ${CLFS}/targetfs/init
-${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/cross-tools/${CLFS_TARGET}/bin/busybox
+${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/bin/busybox
 # chmod u+s ${CLFS}/targetfs/bin/busybox
 
 # Clean up

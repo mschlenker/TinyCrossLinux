@@ -26,7 +26,7 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/linux-kvm/tools/kvm
 make clean
 make WERROR=0 CROSS_COMPILE=${CLFS_TARGET}-
 install -m 0755 lkvm ${CLFS}/targetfs/usr/bin || exit 1 
-${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/cross-tools/${CLFS_TARGET}/usr/bin/lkvm
+${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/lkvm
 
 # Clean up
 
