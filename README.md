@@ -7,17 +7,17 @@ Our TinyCrossLinux is initially based on "Cross Linux from Scratch" (embedded). 
 
 Scripts in this repository might be eventually moved to LessLinux' build process (I feel tempted not do to so to keep it simple). Currently only x86_64 is supported. ia32 and armhf (Raspberry Pi) will follow, but are of no major priority.
 
-stage01
+What is in stage01?
 --------
 
 Scripts to build the toolchain itself. You probably will not need to add/modify scripts here.
 
-stage02
+What is in stage02?
 --------
 
 Scripts to build binaries for the target filesystem. Add as you want, but do not forget that you are cross compiling. Define `PKGNAME=...` and `PKGVERSION=...` since those are read by the script `build_stage0n.sh`. 
 
-build_iso.sh
+Building everything!
 -------------
 
 Script to assemble a bootable ISO image (isohybrid, might be dd'ed to an USB thumb drive). Currently BIOS only, UEFI will follow. Feel free to ad an overlay or similar sick things to this script - it is less than 40 lines anyway.
@@ -75,4 +75,10 @@ Changes to the boot scripts that will be eventually made:
  
 I will also write a script to select certain modules and subdirectories from the kernels module tree to be able to reduce the size of the resulting ISO image without having to reconfigure the kernel.
 
-UEFI boot will be added during the next days.
+### Are there bugs?
+
+Probably there are some. I already ran into those:
+
+ * You have to boot with a connected ethernet cable, otherwise udhcpc will try nearly forever to get a lease.
+ * Some kernel modules complain about unresolved symbols - I will add loading of some prerequisite modules in the next days.
+ * Some firmware is missing - I will provide you with a script to automatically install firmware for the linux-firmware collection for kernel modules installed, in the meantime add those blobs by hand.
