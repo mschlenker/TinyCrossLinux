@@ -49,7 +49,7 @@ by
 	
 ...
 
-### Add busybox features?
+### Add more services?
 
 The build script `stage02/0001_basefiles.sh` installs some of the startup scripts. Many of them are copied from the `patches directory`. You might want to create `stage02/0002_mybasefiles.sh`. Or you just expand the basefiles script.
 
