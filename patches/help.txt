@@ -1,0 +1,8 @@
+
+Welcome to TinyCrossLinux - Mattias Schlenkers lesson to teach how to
+construct a really compact distribution running from initramfs.
+
+Please consult https://github.com/mschlenker/TinyCrossLinux
+to obtain the build scripts and further information!
+
+Have fun!

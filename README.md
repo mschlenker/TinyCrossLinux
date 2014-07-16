@@ -29,6 +29,15 @@ So to build TinyCrossLinux run
 	
 ## FAQ
 
+### Start services
+
+Currently the following services provided by BusyBox or dropbearmulti are available. They are inactive by default, so use the bootparameters specified to enable them:
+
+ * SSHD `sshd=1` - you might want to add a permanent key to `/etc/dropbear`
+ * HTTPD `httpd=1` - searches for files in `/srv/www`
+ * TFTPD `tftpd=1` - serves files from `/srv/tftp` 
+ * UDHCPD `udhcpd=1` - starts only in `/etc/udhcpd.conf` is present
+
 ### Login with password?
 
 Run the command
@@ -53,13 +62,7 @@ The build script `stage02/0001_basefiles.sh` installs some of the startup script
 
 ### Do you plan to add features?
 
-This linux distribution will stay small and compact, thus I do not plan to add many features. I will add some startup scripts that you can install by extending or adding scripts in stage02 to install them. This will include examples for services provided by BusyBox:
-
- * httpd
- * tftpd
- * udhcpd
-
-Those together are enough to build a PXE boot server. I also will add some build scripts to further expand the system for some rescue and forensic purposes:
+This linux distribution will stay small and compact, thus I do not plan to add many features. I will add some build scripts to further expand the system for some rescue and forensic purposes:
 
  * ddrescue
  * ntfs-3g (ntfsclone etc.)

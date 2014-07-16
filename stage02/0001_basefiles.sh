@@ -3,10 +3,9 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=basefiles
-PKGVERSION=20140715
+PKGVERSION=20140716
  
 # Build and install
-
 mkdir -p ${CLFS}/targetfs/etc/rc.d
 mkdir -p ${CLFS}/targetfs/etc/rc.subr
 mkdir -p ${CLFS}/targetfs/root
@@ -33,3 +32,8 @@ install -m 0755 patches/etc-rc.d-0010-loop.sh ${CLFS}/targetfs/etc/rc.d/0010-loo
 install -m 0755 patches/etc-rc.d-0012-syslogd.sh ${CLFS}/targetfs/etc/rc.d/0012-syslogd.sh
 install -m 0755 patches/etc-rc.d-0020-loadmodules.sh ${CLFS}/targetfs/etc/rc.d/0020-loadmodules.sh
 install -m 0755 patches/etc-rc.d-0040-udhcpd.sh ${CLFS}/targetfs/etc/rc.d/0040-udhcpc.sh
+
+# optional startup scripts
+install -m 0755 patches/etc-rc.d-0055-httpd.sh ${CLFS}/targetfs/etc/rc.d/0055-httpd.sh
+install -m 0755 patches/etc-rc.d-0060-tftpd.sh ${CLFS}/targetfs/etc/rc.d/0060-tftpd.sh
+install -m 0755 patches/etc-rc.d-0065-udhcpd.sh ${CLFS}/targetfs/etc/rc.d/0060-udhcpd.sh

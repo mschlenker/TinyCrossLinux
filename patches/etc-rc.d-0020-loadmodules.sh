@@ -48,9 +48,13 @@ case $1 in
 			modprobe -q -b $modname
 			alreadyloaded="$alreadyloaded $modname "
 		    fi
-	done   
+	done
 	mountpoint -q /proc/bus/usb || mount -t usbfs usbfs /proc/bus/usb
 	mdev -s
 	printf "${bold}Loading USB drivers ${success} ${normal}\n"
+	printf "${bold}Loading MISC drivers... ${normal}\n"
+	for n in sd_mod sg usb_storage ; do
+		modprobe $n
+	done
     ;;
 esac
