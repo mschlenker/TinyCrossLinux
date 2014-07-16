@@ -53,7 +53,7 @@ case $1 in
 	mdev -s
 	printf "${bold}Loading USB drivers ${success} ${normal}\n"
 	printf "${bold}Loading MISC drivers... ${normal}\n"
-	for n in sd_mod sg usb_storage ; do
+	for n in sd_mod sg usb_storage sr_mod iso9660 virtio_net ; do
 		modprobe $n
 	done
     ;;
