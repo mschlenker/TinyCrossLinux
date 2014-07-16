@@ -7,17 +7,17 @@ Our TinyCrossLinux is initially based on "Cross Linux from Scratch" (embedded). 
 
 Scripts in this repository might be eventually moved to LessLinux' build process (I feel tempted not do to so to keep it simple). Currently only x86_64 is supported. ia32 and armhf (Raspberry Pi) will follow, but are of no major priority.
 
-stage01:
+stage01
 --------
 
 Scripts to build the toolchain itself. You probably will not need to add/modify scripts here.
 
-stage02:
+stage02
 --------
 
 Scripts to build binaries for the target filesystem. Add as you want, but do not forget that you are cross compiling. Define `PKGNAME=...` and `PKGVERSION=...` since those are read by the script `build_stage0n.sh`. 
 
-build_iso.sh:
+build_iso.sh
 -------------
 
 Script to assemble a bootable ISO image (isohybrid, might be dd'ed to an USB thumb drive). Currently BIOS only, UEFI will follow. Feel free to ad an overlay or similar sick things to this script - it is less than 40 lines anyway.
