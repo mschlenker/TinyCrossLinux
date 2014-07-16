@@ -35,7 +35,7 @@ Run the command
 	
 	openssl passwd -1
 	
-on an arbitary machine and replace the '!' in roots line in `patches/etc-shadow` with the output.
+on an arbitary machine to create a password hash and replace the '!' in roots line in `patches/etc-shadow` with the output.
 
 ### Remove login without password?
 
@@ -49,7 +49,28 @@ by
 	
 ...
 
-### Add more services?
+### I want to add more services!
 
 The build script `stage02/0001_basefiles.sh` installs some of the startup scripts. Many of them are copied from the `patches directory`. You might want to create `stage02/0002_mybasefiles.sh`. Or you just expand the basefiles script.
 
+### Do you plan to add features?
+
+This linux distribution will stay small and compact, thus I do not plan to add many features. I will add some startup scripts that you can install by extending or adding scripts in stage02 to install them. This will include examples for services provided by BusyBox:
+
+ * httpd
+ * tftpd
+ * udhcpd
+
+Those together are enough to build a PXE boot server. I also will add some build scripts to further expand the system for some rescue and forensic purposes:
+
+ * ddrescue
+ * ntfs-3g (ntfsclone etc.)
+ 
+Changes to the boot scripts that will be eventually made:
+
+ * more flexible network configuration (allow specification of static IP via boot command line)
+ * more flexible module loading (blacklisting and allow to specify additional modules via boot command line)
+ 
+I will also write a script to select certain modules and subdirectories from the kernels module tree to be able to reduce the size of the resulting ISO image without having to reconfigure the kernel.
+
+UEFI boot will be added during the next days.
