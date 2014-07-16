@@ -29,7 +29,7 @@ for f in bios/com32/menu/menu.c32 bios/com32/menu/vesamenu.c32 \
 done
 
 for f in isolinux.cfg help.txt ; do
-	install -m 0644 patches/${f} ${CLFS}/iso/boot/isolinux/
+	install -m 0644 patches/${f} ${CLFS}/iso-bios/boot/isolinux/
 done
 
 ${CLFS}/hosttools/bin/xorriso -as mkisofs -joliet -graft-points \
