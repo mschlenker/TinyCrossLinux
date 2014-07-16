@@ -19,6 +19,8 @@ mountpoint -q /dev/pts || mount -t devpts -o rw,nosuid,noexec,relatime,gid=5,mod
 mountpoint -q /dev/shm || mount -t tmpfs devshm /dev/shm
 mountpoint -q /tmp || mount -t tmpfs tmpfs /tmp
 
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+
 for i in /etc/rc.d/[0-9][0-9][0-9][0-9]-*.?? ; do
 	$i start
 done

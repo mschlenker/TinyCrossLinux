@@ -48,7 +48,7 @@ ${CLFS}/hosttools/bin/xorriso -as mkisofs -joliet -graft-points \
 sync 
 
 # Exit - do not build EFI bootable ISO yet
-exit 0
+# exit 0
 
 # Calculate size of the system dir
 efisize=` du ${CLFS}/iso-bios/boot/system | tail -n1 | awk '{print $1}' `
@@ -67,11 +67,12 @@ cp -v ${CLFS}/iso-bios/boot/system/initrd.gz ${CLFS}/tmp/efi/INITRD.GZ
 mkdir -p ${CLFS}/tmp/efi/EFI/BOOT
 mkdir -p ${CLFS}/tmp/efi/loader/entries
 cp -v ${CLFS}/hosttools/lib/gummiboot/gummibootx64.efi ${CLFS}/tmp/efi/EFI/BOOT/BOOTX64.EFI
+cp -v patches/loader.conf ${CLFS}/tmp/efi/loader/loader.conf
+cp -v patches/tiny.conf ${CLFS}/tmp/efi/loader/entries/00tinycross.conf
 sync 
 sleep 3
 umount ${CLFS}/tmp/efi
-cp -v patches/loader.conf ${CLFS}/tmp/efi/loader/loader.conf
-cp -v patches/tiny.conf ${CLFS}/tmp/efi/loader/entries/tiny.conf
+
 losetup -d $freeloop
 # We need a dummy isolinux, otherwise ISO will not boot
 install -m 0644 ${CLFS}/hosttools/share/syslinux/bios/core/isolinux.bin ${CLFS}/iso-uefi/boot/isolinux
