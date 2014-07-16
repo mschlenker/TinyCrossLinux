@@ -46,8 +46,6 @@ Take a look at `patches/etc-inittab`. Replace lines like
 by
 
 	ttyN::respawn:/sbin/getty -l /bin/login 38400 ttyN
-	
-...
 
 ### I want to add more services!
 
