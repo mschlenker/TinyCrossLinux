@@ -47,6 +47,9 @@ ${CLFS}/hosttools/bin/xorriso -as mkisofs -joliet -graft-points \
 	-V TINYCROSS -o ${CLFS}/tiny-cross-bios.iso -r ${CLFS}/iso-bios
 sync 
 
+# Exit - do not build EFI bootable ISO yet
+exit 0
+
 # Calculate size of the system dir
 efisize=` du ${CLFS}/iso-bios/boot/system | tail -n1 | awk '{print $1}' `
 efisize=` expr $efisize '*' 105 / 100 + 1000 ` 
