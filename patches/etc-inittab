@@ -5,5 +5,6 @@ tty3::respawn:/sbin/getty -l /bin/login 38400 tty3
 tty4::askfirst:/bin/ash
 tty5::askfirst:/bin/ash
 tty6::askfirst:/bin/ash
+ttyS0::respawn:/bin/ash
 ::ctrlaltdel:/sbin/reboot
 ::shutdown:/etc/rc.shutdown
