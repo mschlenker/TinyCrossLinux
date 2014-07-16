@@ -24,8 +24,9 @@ Script to assemble a bootable ISO image (isohybrid, might be dd'ed to an USB thu
 
 So to build TinyCrossLinux run
 
-	bash build_stage0n.sh
-	bash build_iso.sh
+	bash build_stage0n.sh # compiles everything
+	bash build_iso.sh     # builds two ISO images
+	                      # one for BIOS - one for UEFI
 	
 ## FAQ
 
