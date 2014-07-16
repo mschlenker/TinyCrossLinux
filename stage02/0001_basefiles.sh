@@ -36,4 +36,4 @@ install -m 0755 patches/etc-rc.d-0040-udhcpd.sh ${CLFS}/targetfs/etc/rc.d/0040-u
 # optional startup scripts
 install -m 0755 patches/etc-rc.d-0055-httpd.sh ${CLFS}/targetfs/etc/rc.d/0055-httpd.sh
 install -m 0755 patches/etc-rc.d-0060-tftpd.sh ${CLFS}/targetfs/etc/rc.d/0060-tftpd.sh
-install -m 0755 patches/etc-rc.d-0065-udhcpd.sh ${CLFS}/targetfs/etc/rc.d/0060-udhcpd.sh
+install -m 0755 patches/etc-rc.d-0065-udhcpd.sh ${CLFS}/targetfs/etc/rc.d/0065-udhcpd.sh

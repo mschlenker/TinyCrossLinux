@@ -1,5 +1,10 @@
 #!/bin/bash
 
+me=` id -u `
+if [ "$me" -gt 0 ] ; then
+	echo 'Please run this script with root privileges!'
+fi
+
 source stage0n_variables
 
 mkdir -p ${CLFS}/build 
