@@ -1,6 +1,11 @@
 
 # Define some common variables - those can be overwritten by 
-# environment variables
+# environment variables. Currently only x86 is supported. Thus
+# to build for 32 Bit instead of 64 Bit, export some variables
+# before building:
+#
+# export TINYTARGET=i386-linux-musl
+# export TINYCPU=i686
 
 CLFS=/mnt/archiv/TinyCrossBuild
 if [ -n "$TINYBUILDDIR" ] ; then
