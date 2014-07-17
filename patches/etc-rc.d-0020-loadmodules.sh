@@ -8,6 +8,14 @@ case $1 in
     start)
 	kversion=` uname -r `
 	alreadyloaded=""
+	printf "${bold}Loading MISC drivers... ${normal}\n"
+	for n in jbd zlib_deflate libcrc32c scsi_mod libata ata_generic ata_piix mii libahci \
+		ahci usb_common usbcore xhci_hcd uhci_hcd ohci_hcd ohci_pci \
+		ehci_hcd ehci_pci pata_ahci yenta_socket  crc_t10dif  sd_mod \
+		crct10dif_common crc_t10dif crc_itu_t udf  crc_ccitt crc7 crc32 \
+		libphy sunrpc md4 des_generic sha512_generic sha256_generic   ; do
+		modprobe $n
+	done
 	printf "${bold}Loading PCI drivers... ${normal}\n"
 	for i in /sys/bus/pci/devices/* ; do 
 		prod=` cat $i/device | sed 's/0x//' `
