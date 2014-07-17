@@ -1,6 +1,26 @@
 
+# Define some common variables - those can be overwritten by 
+# environment variables
+
 CLFS=/mnt/archiv/TinyCrossBuild
+if [ -n "$TINYBUILDDIR" ] ; then
+	CLFS="$TINYBUILDDIR"
+fi
+export CLFS
 SRCDIR=${CLFS}/src
+if [ -n "$TINYSRCDIR" ] ; then
+	SRCDIR="$TINYSRCDIR"
+fi
+export SRCDIR
 export CLFS_TARGET=x86_64-linux-musl 
+if [ -n "$TINYTARGET" ] ; then
+	export CLFS_TARGET="$TINYTARGET"
+fi
 export CLFS_CPU=k8
+if [ -n "$TINYCPU" ] ; then
+	export CLFS_CPU="$TINYCPU"
+fi
 export CLFS_ARCH="x86"
+if [ -n "$TINYARCH" ] ; then
+	export CLFS_ARCH="$TINYARCH"
+fi
