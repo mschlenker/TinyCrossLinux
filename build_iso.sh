@@ -15,10 +15,12 @@ mkdir -p ${CLFS}/tmp/efi
 
 # Copy libraries
 echo ${CLFS}/cross-tools/${CLFS_TARGET} ${CLFS}/targetfs 
-tar -C  ${CLFS}/cross-tools/${CLFS_TARGET} --exclude='*.a' --exclude='pkgconfig' --exclude='ldscripts' -cvf - lib lib64 | tar -C ${CLFS}/targetfs -xf - 
+tar -C  ${CLFS}/cross-tools/${CLFS_TARGET} --exclude='*.a' --exclude='*.la' \
+	--exclude='pkgconfig' --exclude='ldscripts' \
+	-cvf - lib lib64 | tar -C ${CLFS}/targetfs -xf - 
 
 # Create the initramfs
-( cd ${CLFS}/targetfs ; find . | cpio -o -H newc | gzip -c > ../iso-bios/boot/system/initrd.gz )
+( cd ${CLFS}/targetfs ; find . | grep -v '^\./boot' | cpio -o -H newc | gzip -c > ../iso-bios/boot/system/initrd.gz )
 
 # Copy the kernel
 kern=` ls ${CLFS}/targetfs/boot/vmlinuz* | tail -n1 ` 
