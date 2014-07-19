@@ -7,6 +7,11 @@ fi
 
 source stage0n_variables
 
+# Remove old build directories, create new ones:
+
+rm -rf "${CLFS}/iso-bios"
+rm -rf "${CLFS}/iso-uefi"
+
 mkdir -p ${CLFS}/iso-bios/boot/isolinux
 mkdir -p ${CLFS}/iso-bios/boot/system
 mkdir -p ${CLFS}/iso-uefi/boot/efi
