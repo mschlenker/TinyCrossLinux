@@ -17,6 +17,11 @@ What is in stage02?
 
 Scripts to build binaries for the target filesystem. Add as you want, but do not forget that you are cross compiling. Define `PKGNAME=...` and `PKGVERSION=...` since those are read by the script `build_stage0n.sh`. 
 
+What is in stage02.extras?
+--------
+
+These are scripts for tools and libraries that are not part of the base system. Softlink scripts of software you want to include to stage02. But be warned, you have to manually track dependencies, for example ntfs-3 needs fuse.
+
 Building everything!
 -------------
 
