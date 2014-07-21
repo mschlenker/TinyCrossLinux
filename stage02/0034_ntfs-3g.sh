@@ -9,7 +9,7 @@ PKGVERSION=2014.2.15
 # Download:
 
 [ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tgz ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tgz \
-	http://tuxera.com/opensource/${PKGVERSION}/${PKGNAME}-${PKGVERSION}.tgz 
+	http://tuxera.com/opensource/${PKGNAME}-${PKGVERSION}.tgz 
 
 # Unpack and patch
 
