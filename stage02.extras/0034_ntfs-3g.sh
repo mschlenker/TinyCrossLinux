@@ -37,7 +37,7 @@ rm -rf ${CLFS}/targetfs/usr/lib/pkgconfig
 rm -rf ${CLFS}/targetfs/usr/lib/libntfs-3g.{,l}a
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/ntfs*
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/sbin/ntfs*
-${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/lib/libntfs*
+${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/lib/libntfs*
 
 # Clean up
 
