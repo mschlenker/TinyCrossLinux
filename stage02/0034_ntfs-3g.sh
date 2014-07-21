@@ -22,6 +22,7 @@ sed -i 's/ linux-uclibc\*/linux-uclibc\* | linux-musl\*/g' ./config.sub
 
 # Build and install
 
+export PKG_CONFIG_PATH=${CLFS}/cross-tools/${CLFS_TARGET}/lib/pkgconfig
 ./configure --prefix=/usr --host=${CLFS_TARGET} --with-fuse=external
 make || exit 1
 make prefix=${CLFS}/targetfs install || exit 1
