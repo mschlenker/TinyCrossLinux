@@ -39,6 +39,6 @@ ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/bin/busybox
 # chmod u+s ${CLFS}/targetfs/bin/busybox
 
 # Clean up
-
+cd ${CLFS}/build
 rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 
