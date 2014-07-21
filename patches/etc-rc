@@ -22,7 +22,7 @@ mount -t tmpfs tmpfs /tmp
 
 echo /sbin/mdev > /proc/sys/kernel/hotplug
 
-ifconfig lo inet 127.0.0.1 netmask 255.0.0.0 up && printf "${success}\n"
+ifconfig lo inet 127.0.0.1 netmask 255.0.0.0 up
 echo '127.0.0.1 localhost' > /etc/hosts
 hostname tinycross
 
