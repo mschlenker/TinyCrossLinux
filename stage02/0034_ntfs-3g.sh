@@ -24,7 +24,7 @@ sed -i 's/ linux-uclibc\*/linux-uclibc\* | linux-musl\*/g' ./config.sub
 
 export FUSE_MODULE_CFLAGS="-D_FILE_OFFSET_BITS=64 -I${CLFS}/cross-tools/${CLFS_TARGET}/include"
 export FUSE_MODULE_LIBS='-pthread -lfuse'
-./configure --prefix=/usr --host=${CLFS_TARGET} --with-fuse=external
+./configure --prefix=/usr --host=${CLFS_TARGET} --with-fuse=external --enable-extras=no 
 make 
 cp -v ${CLFS}/cross-tools/${CLFS_TARGET}/include/fuse_lowlevel.h include/ntfs-3g/
 make || exit 1
