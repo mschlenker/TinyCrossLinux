@@ -9,7 +9,7 @@ PKGVERSION=2.9.3
 # Download:
 
 [ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz \
-	http://downloads.sourceforge.net/project/fuse/fuse-2.X/${PKGVERSION}/${PKGVERSION}/${PKGNAME}-${PKGVERSION}.tar.gz 
+	http://downloads.sourceforge.net/project/fuse/fuse-2.X/${PKGVERSION}/${PKGNAME}-${PKGVERSION}.tar.gz 
 
 # Unpack and patch
 
