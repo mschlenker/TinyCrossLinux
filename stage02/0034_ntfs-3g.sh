@@ -25,7 +25,9 @@ sed -i 's/ linux-uclibc\*/linux-uclibc\* | linux-musl\*/g' ./config.sub
 export FUSE_MODULE_CFLAGS="-D_FILE_OFFSET_BITS=64 -I${CLFS}/cross-tools/${CLFS_TARGET}/include"
 export FUSE_MODULE_LIBS='-pthread -lfuse'
 ./configure --prefix=/usr --host=${CLFS_TARGET} --with-fuse=external
-make || exit 1
+make 
+cp -v ${CLFS}/cross-tools/${CLFS_TARGET}/include/fuse_lowlevel.h src/
+make
 make prefix=${CLFS}/targetfs install || exit 1
 rm -rf ${CLFS}/targetfs/usr/share/doc
 rm -rf ${CLFS}/targetfs/usr/lib/pkgconfig
