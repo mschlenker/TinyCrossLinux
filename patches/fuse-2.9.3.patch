@@ -1,0 +1,71 @@
+Only in fuse-2.9.3.patched/: Makefile
+Only in fuse-2.9.3.patched/: config.log
+Only in fuse-2.9.3.patched/: config.status
+diff -ru fuse-2.9.3.orig/config.sub fuse-2.9.3.patched/config.sub
+--- fuse-2.9.3.orig/config.sub	2013-02-18 14:44:00.000000000 +0100
++++ fuse-2.9.3.patched/config.sub	2014-07-20 21:04:43.704454786 +0200
+@@ -123,7 +123,7 @@
+ maybe_os=`echo $1 | sed 's/^\(.*\)-\([^-]*-[^-]*\)$/\2/'`
+ case $maybe_os in
+   nto-qnx* | linux-gnu* | linux-android* | linux-dietlibc | linux-newlib* | \
+-  linux-uclibc* | uclinux-uclibc* | uclinux-gnu* | kfreebsd*-gnu* | \
++ linux-uclibc* | linux-musl* | uclinux-uclibc* | uclinux-gnu* | kfreebsd*-gnu* | \
+   knetbsd*-gnu* | netbsd*-gnu* | \
+   kopensolaris*-gnu* | \
+   storm-chaos* | os2-emx* | rtmk-nova*)
+Only in fuse-2.9.3.patched/doc: Makefile
+Only in fuse-2.9.3.patched/example: .deps
+Only in fuse-2.9.3.patched/example: Makefile
+Only in fuse-2.9.3.patched/: fuse.pc
+Only in fuse-2.9.3.patched/include: Makefile
+Only in fuse-2.9.3.patched/include: config.h
+Only in fuse-2.9.3.patched/include: stamp-h1
+Only in fuse-2.9.3.patched/lib: .deps
+Only in fuse-2.9.3.patched/lib: Makefile
+diff -ru fuse-2.9.3.orig/lib/fuse.c fuse-2.9.3.patched/lib/fuse.c
+--- fuse-2.9.3.orig/lib/fuse.c	2013-07-01 09:40:39.000000000 +0200
++++ fuse-2.9.3.patched/lib/fuse.c	2014-07-20 21:12:46.349306534 +0200
+@@ -37,6 +37,7 @@
+ #include <sys/uio.h>
+ #include <sys/time.h>
+ #include <sys/mman.h>
++#include <sys/file.h>
+ 
+ #define FUSE_NODE_SLAB 1
+ 
+diff -ru fuse-2.9.3.orig/lib/fuse_lowlevel.c fuse-2.9.3.patched/lib/fuse_lowlevel.c
+--- fuse-2.9.3.orig/lib/fuse_lowlevel.c	2013-07-01 09:40:39.000000000 +0200
++++ fuse-2.9.3.patched/lib/fuse_lowlevel.c	2014-07-20 21:13:56.876846489 +0200
+@@ -24,6 +24,7 @@
+ #include <limits.h>
+ #include <errno.h>
+ #include <assert.h>
++#include <sys/file.h>
+ 
+ #ifndef F_LINUX_SPECIFIC_BASE
+ #define F_LINUX_SPECIFIC_BASE       1024
+diff -ru fuse-2.9.3.orig/lib/mount.c fuse-2.9.3.patched/lib/mount.c
+--- fuse-2.9.3.orig/lib/mount.c	2013-07-01 09:55:15.000000000 +0200
++++ fuse-2.9.3.patched/lib/mount.c	2014-07-20 21:15:12.264354742 +0200
+@@ -20,6 +20,7 @@
+ #include <string.h>
+ #include <fcntl.h>
+ #include <errno.h>
++#include <paths.h>
+ #include <sys/poll.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+diff -ru fuse-2.9.3.orig/lib/mount_util.h fuse-2.9.3.patched/lib/mount_util.h
+--- fuse-2.9.3.orig/lib/mount_util.h	2013-02-18 10:41:39.000000000 +0100
++++ fuse-2.9.3.patched/lib/mount_util.h	2014-07-20 21:15:36.704195323 +0200
+@@ -7,6 +7,7 @@
+ */
+ 
+ #include <sys/types.h>
++#include <paths.h>
+ 
+ int fuse_mnt_add_mount(const char *progname, const char *fsname,
+ 		       const char *mnt, const char *type, const char *opts);
+Only in fuse-2.9.3.patched/: libtool
+Only in fuse-2.9.3.patched/util: .deps
+Only in fuse-2.9.3.patched/util: Makefile
