@@ -6,6 +6,13 @@ source stage02_variables
 PKGNAME=linux
 PKGVERSION=3.15.6
 
+if which bc ; then
+	echo '---> bc found in path continuing...'
+else
+	echo '+++> bc not found in path - please install!'
+	exit 1
+fi
+
 # Download:
 
 [ -f ${SRCDIR}/${PKGNAME}-3.15.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-3.15.tar.xz \
