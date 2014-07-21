@@ -27,12 +27,19 @@ export FUSE_MODULE_LIBS='-pthread -lfuse'
 ./configure --prefix=/usr --host=${CLFS_TARGET} --with-fuse=external --enable-extras=no 
 make || exit 1
 make prefix=${CLFS}/targetfs install || exit 1
+# fix a softlink
+rm ${CLFS}/targetfs/lib/libntfs-3g.so
+install -m 0755 libntfs-3g/.libs/libntfs-3g.so.85.0.0 ${CLFS}/targetfs/lib/
+ln -sf  /lib/libntfs-3g.so.85.0.0 ${CLFS}/targetfs/lib/libntfs-3g.so.85
+ln -sf  /lib/libntfs-3g.so.85.0.0 ${CLFS}/targetfs/lib/libntfs-3g.so
 rm -rf ${CLFS}/targetfs/usr/share/doc
 rm -rf ${CLFS}/targetfs/usr/lib/pkgconfig
 rm -rf ${CLFS}/targetfs/usr/lib/libntfs-3g.{,l}a
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/ntfs*
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/sbin/ntfs*
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/lib/libntfs*
+
 # Clean up
 
+cd ${CLFS}/build
 rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
