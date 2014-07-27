@@ -17,9 +17,8 @@ case $1 in
 	if [ "$enable" -gt 0 ] ; then
 		printf "${bold}Starting network... ${normal}\n"
 		for n in 0 1 2 3 4 ; do
-			ifconfig eth${n} up
+			ifconfig eth${n} up && udhcpc -i eth${n} -S -b 
 		done
-		udhcpc -S
 	fi
     ;;
 esac
