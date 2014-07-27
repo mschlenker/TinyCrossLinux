@@ -3,7 +3,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=basefiles
-PKGVERSION=20140716
+PKGVERSION=20140727
  
 # Build and install
 mkdir -p ${CLFS}/targetfs/etc/rc.d
@@ -28,7 +28,6 @@ install -m 0644 patches/etc-mdev.conf ${CLFS}/targetfs/etc/mdev.conf
 
 # startup services
 install -m 0755 patches/usr-share-udhcpc-default.script ${CLFS}/targetfs/usr/share/udhcpc/default.script
-install -m 0755 patches/etc-rc.d-0010-loop.sh ${CLFS}/targetfs/etc/rc.d/0010-loop.sh
 install -m 0755 patches/etc-rc.d-0012-syslogd.sh ${CLFS}/targetfs/etc/rc.d/0012-syslogd.sh
 install -m 0755 patches/etc-rc.d-0020-loadmodules.sh ${CLFS}/targetfs/etc/rc.d/0020-loadmodules.sh
 install -m 0755 patches/etc-rc.d-0040-udhcpd.sh ${CLFS}/targetfs/etc/rc.d/0040-udhcpc.sh
