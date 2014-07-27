@@ -42,11 +42,11 @@ echo '===> Populating the boot media for BIOS:'
 # concatenate. 
 
 if [ -n "$TINYCPIOPAYLOAD" ] ; then
-	cat ${CLFS}/iso-uefi/boot/system/initrd.cpio "$TINYCPIOPAYLOAD" | \
-		gzip -c > ${CLFS}/iso-uefi/boot/system/initrd.gz
+	cat ${CLFS}/iso-bios/boot/system/initrd.cpio "$TINYCPIOPAYLOAD" | \
+		gzip -c > ${CLFS}/iso-bios/boot/system/initrd.gz
 else
-	gzip -c ${CLFS}/iso-uefi/boot/system/initrd.cpio > \
-		${CLFS}/iso-uefi/boot/system/initrd.gz
+	gzip -c ${CLFS}/iso-bios/boot/system/initrd.cpio > \
+		${CLFS}/iso-bios/boot/system/initrd.gz
 fi
 rm ${CLFS}/iso-uefi/boot/system/initrd.cpio
 
