@@ -33,7 +33,22 @@ echo '===> Populating the boot media for BIOS:'
 # that resides in /boot we just remove the boot directory from the file list given to
 # cpio. 
 ( cd ${CLFS}/targetfs ; find . | grep -v '^\./boot' | \
-	cpio -o -H newc | gzip -c > ../iso-bios/boot/system/initrd.gz )
+	cpio -o -H newc > ../iso-bios/boot/system/initrd.cpio )
+
+# If a payload is given, it will be appended the initramfs we just created. Since
+# it is loaded after the default initramfs, it allows to replace files from the 
+# original initramfs. Some bootloaders like isolinux/syslinux allow more flexibility
+# by specifying multiple initramfs files. For compatibility reasons we just
+# concatenate. 
+
+if [ -n "$TINYCPIOPAYLOAD" ] ; then
+	cat ${CLFS}/iso-uefi/boot/system/initrd.cpio "$TINYCPIOPAYLOAD" | \
+		gzip -c > ${CLFS}/iso-uefi/boot/system/initrd.gz
+else
+	gzip -c ${CLFS}/iso-uefi/boot/system/initrd.cpio > \
+		${CLFS}/iso-uefi/boot/system/initrd.gz
+fi
+rm ${CLFS}/iso-uefi/boot/system/initrd.cpio
 
 # You might specify a certain kernel to use a boot kernel by defining the environment
 # variable TINYKERNEL. If you do not do so, the last kernel in the list of installed 
@@ -97,12 +112,17 @@ mkdir -p ${CLFS}/tmp/efi/loader/entries
 cp -v ${CLFS}/hosttools/lib/gummiboot/gummibootx64.efi ${CLFS}/tmp/efi/EFI/BOOT/BOOTX64.EFI
 cp -v patches/loader.conf ${CLFS}/tmp/efi/loader/loader.conf
 cp -v patches/tiny.conf ${CLFS}/tmp/efi/loader/entries/00tinycross.conf
+
 # At this point you can run a script that copies additional files to:
+#
 # ${CLFS}/tmp/efi/
 # ${CLFS}/iso-bios/
-# ${CLFS}/iso-bios/
+# ${CLFS}/iso-uefi/
+#
+# This way you can add larger payloads to large for including to initramfs
 # Specify a script that does the copying in the environment variable TINYADDISOFILES
 [ -n "$TINYADDISOFILES" -a -x "$TINYADDISOFILES" ] && "$TINYADDISOFILES"
+
 sync 
 sleep 3
 umount ${CLFS}/tmp/efi || exit 1
