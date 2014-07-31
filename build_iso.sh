@@ -48,7 +48,7 @@ else
 	gzip -c ${CLFS}/iso-bios/boot/system/initrd.cpio > \
 		${CLFS}/iso-bios/boot/system/initrd.gz
 fi
-rm ${CLFS}/iso-uefi/boot/system/initrd.cpio
+rm ${CLFS}/iso-bios/boot/system/initrd.cpio
 
 # You might specify a certain kernel to use a boot kernel by defining the environment
 # variable TINYKERNEL. If you do not do so, the last kernel in the list of installed 
