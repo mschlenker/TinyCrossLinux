@@ -17,7 +17,7 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvzf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz
 cd ${PKGNAME}-${PKGVERSION}
 sed -i 's%/dev/null/wtmp%/var/log/wtmp%g' include/paths.h
-sed -i 's%/dev/null/utmp%/var/log/utmp%g' include/paths.h
+sed -i 's%/dev/null/utmp%/var/run/utmp%g' include/paths.h
 
 # Build and install
 
