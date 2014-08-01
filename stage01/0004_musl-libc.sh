@@ -15,10 +15,12 @@ PKGVERSION=1.1.2
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvzf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz
+cd ${PKGNAME}-${PKGVERSION}
+sed -i 's%/dev/null/wtmp%/var/log/wtmp%g' include/paths.h
+sed -i 's%/dev/null/utmp%/var/log/utmp%g' include/paths.h
 
 # Build and install
 
-cd ${PKGNAME}-${PKGVERSION}
 CFLAGS=-fno-toplevel-reorder \
 CC=${CLFS_TARGET}-gcc \
 ./configure \
