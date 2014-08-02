@@ -16,9 +16,10 @@ mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvzf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz
 cd ${PKGNAME}-${PKGVERSION}
-sed -i 's%/dev/null/wtmp%/var/log/wtmp%g' include/paths.h
-sed -i 's%/dev/null/utmp%/var/run/utmp%g' include/paths.h
-
+fo f in utmp paths ; do
+	sed -i 's%/dev/null/wtmp%/var/log/wtmp%g' include/${f}.h
+	sed -i 's%/dev/null/utmp%/var/run/utmp%g' include/${f}.h
+done
 # Build and install
 
 CFLAGS=-fno-toplevel-reorder \
@@ -33,5 +34,6 @@ ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/cross-tools/${CLFS_TARGET}/
 
 # Clean up
 
+cd ${CLFS}/build
 rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 
