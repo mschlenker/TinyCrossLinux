@@ -16,7 +16,7 @@ mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvzf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz
 cd ${PKGNAME}-${PKGVERSION}
-fo f in utmp paths ; do
+for f in utmp paths ; do
 	sed -i 's%/dev/null/wtmp%/var/log/wtmp%g' include/${f}.h
 	sed -i 's%/dev/null/utmp%/var/run/utmp%g' include/${f}.h
 done
