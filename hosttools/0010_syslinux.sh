@@ -2,7 +2,7 @@
 source stage0n_variables
 
 PKGNAME=syslinux
-PKGVERSION=6.03-pre18
+PKGVERSION=6.03-pre19
 
 # Download
  
