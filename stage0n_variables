@@ -14,7 +14,9 @@
 # export TINYTARGET=arm-linux-musleabihf 
 # export TINYARCH=arm
 # export TINYCPU=armv6
-# export CLFS_FPU=fpe3
+# export CLFS_FPU=vfp
+# export CLFS_FLOAT=hard
+# export TINYBUILDDIR=/mnt/archiv/TinyCrossBuildPi
 
 CLFS=/mnt/archiv/TinyCrossBuild
 if [ -n "$TINYBUILDDIR" ] ; then
@@ -40,6 +42,10 @@ if [ -n "$TINYARCH" ] ; then
 	if [ "$TINYARCH" = arm ] ; then
 		if [ -z "$CLFS_FPU" ] ; then
 			echo '***> FAILED. Please provide CLFS_FPU to specify your floating point unit!'
+			exit 1
+		fi
+		if [ -z "$CLFS_FLOAT" ] ; then
+			echo '***> FAILED. Please provide CLFS_FLOAT to specify your floating point type!'
 			exit 1
 		fi
 	fi

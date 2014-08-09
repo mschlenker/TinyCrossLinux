@@ -36,6 +36,13 @@ mv -v gmp-6.0.0 gmp
 tar xf ${SRCDIR}/mpc-1.0.2.tar.gz
 mv -v mpc-1.0.2 mpc
 
+case ${CLFS_TARGET} in
+	*arm*)
+		ARMFLOAT="--with-float=${CLFS_FLOAT}"
+		ARMFPU="--with-fpu=${CLFS_FPU}"
+	;;
+esac
+
 cd ../gcc-build
 ../gcc-${PKGVERSION}/configure \
   --prefix=${CLFS}/cross-tools \
@@ -58,7 +65,7 @@ cd ../gcc-build
   --disable-multilib \
   --with-mpfr-include=$(pwd)/../gcc-${PKGVERSION}/mpfr/src \
   --with-mpfr-lib=$(pwd)/mpfr/src/.libs \
-  --with-arch=${CLFS_CPU}
+  --with-arch=${CLFS_CPU} ${ARMFLOAT} ${ARMFPU}
 
 make all-gcc all-target-libgcc || exit 1
 make install-gcc install-target-libgcc || exit 1

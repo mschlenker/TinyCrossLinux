@@ -6,6 +6,13 @@ source stage02_variables
 PKGNAME=kvm
 PKGVERSION=20140617
 
+case ${CLFS_TARGET} in
+	*arm*)
+		echo '+++> Not supported on ARM, skipping'
+		exit 0
+	;;
+esac
+
 # Download:
 
 [ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2 ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2 \

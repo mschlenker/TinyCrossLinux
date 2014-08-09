@@ -13,6 +13,13 @@ else
 	exit 1
 fi
 
+case ${CLFS_TARGET} in
+	*arm*)
+		echo '+++> This config is not (yet) supported on ARM, skipping'
+		exit 0
+	;;
+esac
+
 # Download:
 
 [ -f ${SRCDIR}/${PKGNAME}-3.15.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-3.15.tar.xz \
