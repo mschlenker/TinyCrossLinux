@@ -25,7 +25,7 @@ cat "${workdir}/patches/bash-4.3-upstream_fixes-1.patch" | patch -p1
 
 # Build and install
 
-./configure --prefix=/usr --host=${CLFS_TARGET} --without-bash-malloc
+./configure --prefix=/usr --sysconfdir=/etc --host=${CLFS_TARGET} --without-bash-malloc
 make
 make install DESTDIR=${CLFS}/targetfs
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/bash
