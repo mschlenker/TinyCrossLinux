@@ -13,15 +13,14 @@ PKGVERSION=4.2.1
 
 # Prepare build:
 
+workdir=`pwd `
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvzf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz
 
 # Patch
 
-workdir=`pwd `
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
-# cat ${workdir}/patches/screen-${PKGVERSION}.cross.patch | patch -p1 
 install -m 0755 "${workdir}/patches/screen-4.2.1.configure" configure
 
 # Build and install
