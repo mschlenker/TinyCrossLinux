@@ -7,6 +7,16 @@ fi
 
 source stage0n_variables
 
+case ${CLFS_ARCH} in
+	x86)
+		echo '---> Currently only supported on x86, continuing'
+	;;
+	*)
+		echo '***> Currently only supported on x86, exiting'
+		exit 0
+	;;
+esac
+
 # Remove old build directories, create new ones:
 
 rm -rf "${CLFS}/iso-bios"

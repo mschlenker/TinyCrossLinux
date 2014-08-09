@@ -4,6 +4,16 @@ source stage0n_variables
 PKGNAME=syslinux
 PKGVERSION=6.03-pre19
 
+case ${CLFS_ARCH} in
+	x86)
+		echo '---> Only needed on x86, continuing'
+	;;
+	*)
+		echo '***> Only needed on x86, exiting'
+		exit 0
+	;;
+esac
+
 # Download
  
 [ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz \

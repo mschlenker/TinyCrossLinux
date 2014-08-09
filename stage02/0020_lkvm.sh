@@ -6,9 +6,12 @@ source stage02_variables
 PKGNAME=kvm
 PKGVERSION=20140617
 
-case ${CLFS_TARGET} in
-	*arm*)
-		echo '+++> Not supported on ARM, skipping'
+case ${CLFS_ARCH} in
+	x86)
+		echo '---> Currently only supported on x86, continuing'
+	;;
+	*)
+		echo '***> Currently only supported on x86, exiting'
 		exit 0
 	;;
 esac

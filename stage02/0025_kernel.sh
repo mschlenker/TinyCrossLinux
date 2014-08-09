@@ -13,9 +13,12 @@ else
 	exit 1
 fi
 
-case ${CLFS_TARGET} in
-	*arm*)
-		echo '+++> This config is not (yet) supported on ARM, skipping'
+case ${CLFS_ARCH} in
+	x86)
+		echo '---> Currently only supported on x86, continuing'
+	;;
+	*)
+		echo '***> Currently only supported on x86, exiting'
 		exit 0
 	;;
 esac
