@@ -4,8 +4,17 @@
 # to build for 32 Bit instead of 64 Bit, export some variables
 # before building:
 #
+# This matches i686 - Pentium II, 32 bit x86
+#
 # export TINYTARGET=i386-linux-musl
 # export TINYCPU=i686
+# 
+# This matches Raspberry Pi - currently under development
+#
+# export TINYTARGET=arm-linux-musleabihf 
+# export TINYARCH=arm
+# export TINYCPU=armv6
+# export CLFS_FPU=fpe3
 
 CLFS=/mnt/archiv/TinyCrossBuild
 if [ -n "$TINYBUILDDIR" ] ; then
@@ -28,4 +37,10 @@ fi
 export CLFS_ARCH="x86"
 if [ -n "$TINYARCH" ] ; then
 	export CLFS_ARCH="$TINYARCH"
+	if [ "$TINYARCH" = arm ] ; then
+		if [ -z "$CLFS_FPU" ] ; then
+			echo '***> FAILED. Please provide CLFS_FPU to specify your floating point unit!'
+			exit 1
+		fi
+	fi
 fi
