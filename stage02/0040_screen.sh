@@ -22,7 +22,7 @@ tar xvzf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz
 workdir=`pwd `
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 # cat ${workdir}/patches/screen-${PKGVERSION}.cross.patch | patch -p1 
-install -m 0755 /tmp/screen-4.2.1/configure configure
+install -m 0755 "${workdir}/patches/screen-4.2.1.configure" configure
 
 # Build and install
 
