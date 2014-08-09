@@ -25,10 +25,11 @@ install -m 0755 "${workdir}/patches/screen-4.2.1.configure" configure
 
 # Build and install
 
-./configure --prefix=/ --without-debug --without-ada --enable-overwrite --host=${CLFS_TARGET} --without-cxx
+./configure --prefix=/usr --sysconfdir=/etc --without-debug --without-ada --enable-overwrite --host=${CLFS_TARGET} --without-cxx
 make clean
 make
-make install DESTDIR=${CLFS}/cross-tools/${CLFS_TARGET}
+make install DESTDIR=${CLFS}/targetfs
+${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/screen
 
 # Clean up
 
