@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Define some common variables - those can be overwritten by 
 # environment variables. Currently only x86 is supported. Thus
