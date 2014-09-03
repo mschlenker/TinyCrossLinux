@@ -64,5 +64,7 @@ case $1 in
 	for n in sd_mod sg usb_storage sr_mod iso9660 virtio_net virtio_blk ; do
 		modprobe $n
 	done
+	# Create missing devices:
+	mknod /dev/net/tun c 10 200
     ;;
 esac
