@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=linux
-PKGVERSION=3.15.10
+PKGVERSION=3.17
 
 if which bc ; then
 	echo '---> bc found in path continuing...'
@@ -25,26 +25,26 @@ esac
 
 # Download:
 
-[ -f ${SRCDIR}/${PKGNAME}-3.15.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-3.15.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.15.tar.xz
-[ -f ${SRCDIR}/patch-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
-        https://www.kernel.org/pub/linux/kernel/v3.x/patch-${PKGVERSION}.xz
+[ -f ${SRCDIR}/${PKGNAME}-3.17.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-3.17.tar.xz \
+	https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.17.tar.xz
+# [ -f ${SRCDIR}/patch-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
+#        https://www.kernel.org/pub/linux/kernel/v3.x/patch-${PKGVERSION}.xz
 
 # Prepare build:
 wdir=` pwd `
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
-tar xvJf ${SRCDIR}/${PKGNAME}-3.15.tar.xz
-cd ${PKGNAME}-3.15
-unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
+tar xvJf ${SRCDIR}/${PKGNAME}-3.17.tar.xz
+cd ${PKGNAME}-3.17
+# unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
 
 # Use the variable TINYKCONFIG to specify a custom kernel configuration!
 KCONFIG="${wdir}/patches/config-3.15.1"
 [ -n "$TINYKCONFIG" ] && KCONFIG="$TINYKCONFIG"
 cp -v "$KCONFIG" .config
-
+yes '' | make oldconfig
 cd ..
-mv ${PKGNAME}-3.15 ${PKGNAME}-${PKGVERSION}
+# mv ${PKGNAME}-3.17 ${PKGNAME}-${PKGVERSION}
 
 # Build and install
 TINYARCH=x86_64

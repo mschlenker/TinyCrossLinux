@@ -2,7 +2,7 @@
 source stage0n_variables
 
 PKGNAME=syslinux
-PKGVERSION=6.03-pre20
+PKGVERSION=6.03
 
 case ${CLFS_ARCH} in
 	x86)
@@ -17,7 +17,7 @@ esac
 # Download
  
 [ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz \
-	https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.03/${PKGNAME}-${PKGVERSION}.tar.xz
+	https://www.kernel.org/pub/linux/utils/boot/syslinux/${PKGNAME}-${PKGVERSION}.tar.xz
 
 # Prepare build:
 
