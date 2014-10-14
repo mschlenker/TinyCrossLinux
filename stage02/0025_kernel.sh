@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=linux
-PKGVERSION=3.17
+PKGVERSION=3.17.0
 
 if which bc ; then
 	echo '---> bc found in path continuing...'
@@ -44,7 +44,7 @@ KCONFIG="${wdir}/patches/config-3.15.1"
 cp -v "$KCONFIG" .config
 yes '' | make oldconfig
 cd ..
-# mv ${PKGNAME}-3.17 ${PKGNAME}-${PKGVERSION}
+mv ${PKGNAME}-3.17 ${PKGNAME}-${PKGVERSION}
 
 # Build and install
 TINYARCH=x86_64
