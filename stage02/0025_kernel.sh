@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=linux
-PKGVERSION=3.17.0
+PKGVERSION=3.17.1
 
 if which bc ; then
 	echo '---> bc found in path continuing...'
@@ -27,8 +27,8 @@ esac
 
 [ -f ${SRCDIR}/${PKGNAME}-3.17.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-3.17.tar.xz \
 	https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.17.tar.xz
-# [ -f ${SRCDIR}/patch-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
-#        https://www.kernel.org/pub/linux/kernel/v3.x/patch-${PKGVERSION}.xz
+[ -f ${SRCDIR}/patch-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
+        https://www.kernel.org/pub/linux/kernel/v3.x/patch-${PKGVERSION}.xz
 
 # Prepare build:
 wdir=` pwd `
@@ -36,7 +36,7 @@ mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvJf ${SRCDIR}/${PKGNAME}-3.17.tar.xz
 cd ${PKGNAME}-3.17
-# unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
+unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
 
 # Use the variable TINYKCONFIG to specify a custom kernel configuration!
 KCONFIG="${wdir}/patches/config-3.15.1"
