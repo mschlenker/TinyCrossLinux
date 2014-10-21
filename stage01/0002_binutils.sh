@@ -25,7 +25,8 @@ cd ${PKGNAME}-build
    --target=${CLFS_TARGET} \
    --with-sysroot=${CLFS}/cross-tools/${CLFS_TARGET} \
    --disable-nls \
-   --disable-multilib
+   --disable-multilib \
+   --disable-werror --disable-Werror 
 make configure-host
 make || exit 1
 make install || exit 1
