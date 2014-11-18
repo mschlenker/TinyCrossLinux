@@ -16,7 +16,7 @@ PKGVERSION=4.7.4
 [ -f ${SRCDIR}/mpc-1.0.2.tar.gz  ] || wget -O ${SRCDIR}/mpc-1.0.2.tar.gz \
 	ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.2.tar.gz
 [ -f gcc-4.7.3-musl-1.patch ] || wget -O ${SRCDIR}/gcc-4.7.3-musl-1.patch \
-	http://patches.cross-lfs.org/embedded-dev/gcc-4.7.3-musl-1.patch
+	http://distfiles.lesslinux.org/gcc-4.7.3-musl-1.patch
 
 # Prepare build:
 
