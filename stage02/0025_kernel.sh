@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=linux
-PKGVERSION=3.17.1
+PKGVERSION=3.17.3
 
 if which bc ; then
 	echo '---> bc found in path continuing...'
@@ -39,7 +39,7 @@ cd ${PKGNAME}-3.17
 unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
 
 # Use the variable TINYKCONFIG to specify a custom kernel configuration!
-KCONFIG="${wdir}/patches/config-3.15.1"
+KCONFIG="${wdir}/patches/config-3.17.3"
 [ -n "$TINYKCONFIG" ] && KCONFIG="$TINYKCONFIG"
 cp -v "$KCONFIG" .config
 yes '' | make oldconfig
