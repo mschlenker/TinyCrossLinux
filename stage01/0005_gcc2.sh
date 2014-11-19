@@ -47,7 +47,7 @@ cd ../gcc-build
   --with-mpfr-lib=$(pwd)/mpfr/src/.libs \
   --with-arch=${CLFS_CPU} ${ARMFLOAT} ${ARMFPU}
 
-make || exit 1
+make -j 4 || exit 1
 make install || exit 1
 
 # Clean up
