@@ -18,7 +18,7 @@ tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION} -xvzf ${SRCDIR}/${PKGNAME}-${PKGVE
 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 ./configure --prefix=${CLFS}/hosttools --enable-static
-make || exit 1
+make -j 4 || exit 1
 make install || exit 1
 
 # Clean up
