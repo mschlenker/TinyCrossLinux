@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=bash
-PKGVERSION=4.3
+PKGVERSION=4.3.30
 
 # Download:
 
@@ -21,12 +21,12 @@ tar xvzf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz
 # Patch
 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
-cat "${workdir}/patches/bash-4.3-upstream_fixes-1.patch" | patch -p1
+# cat "${workdir}/patches/bash-4.3-upstream_fixes-1.patch" | patch -p1
 
 # Build and install
 
 ./configure --prefix=/usr --sysconfdir=/etc --host=${CLFS_TARGET} --without-bash-malloc
-make
+make -j 4
 make install DESTDIR=${CLFS}/targetfs
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/bash
 ln -sf /usr/bin/bash ${CLFS}/targetfs/bin/bash
