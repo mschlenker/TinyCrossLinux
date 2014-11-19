@@ -28,7 +28,7 @@ cd ${PKGNAME}-build
    --disable-multilib \
    --disable-werror --disable-Werror 
 make configure-host
-make || exit 1
+make -j 4 || exit 1
 make install || exit 1
 
 # Clean up
