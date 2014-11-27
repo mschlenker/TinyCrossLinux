@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=linux
-PKGVERSION=3.17.3
+PKGVERSION=3.17.4
 
 if which bc ; then
 	echo '---> bc found in path continuing...'
@@ -37,6 +37,8 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvJf ${SRCDIR}/${PKGNAME}-3.17.tar.xz
 cd ${PKGNAME}-3.17
 unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
+# should be fixed in 3.17.5
+sed -i 's%shell objdump%shell $(OBJDUMP)%g' arch/x86/boot/compressed/Makefile
 
 # Use the variable TINYKCONFIG to specify a custom kernel configuration!
 KCONFIG="${wdir}/patches/config-3.17.3"
