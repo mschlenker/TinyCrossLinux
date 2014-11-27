@@ -28,7 +28,7 @@ CC=${CLFS_TARGET}-gcc \
 ./configure \
   --prefix=/ \
   --target=${CLFS_TARGET}
-CFLAGS=-fno-toplevel-reorder CC=${CLFS_TARGET}-gcc make -j 4 || exit 1
+CFLAGS=-fno-toplevel-reorder CC=${CLFS_TARGET}-gcc make -j $( grep -c processor /proc/cpuinfo ) || exit 1
 mkdir -p ${CLFS}/cross-tools/${CLFS_TARGET}/lib
 DESTDIR=${CLFS}/cross-tools/${CLFS_TARGET} make install || exit 1
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/cross-tools/${CLFS_TARGET}/lib/*.so*

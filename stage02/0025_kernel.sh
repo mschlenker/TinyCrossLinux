@@ -62,7 +62,7 @@ esac
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 localversion=` grep '^CONFIG_LOCALVERSION' .config | sed 's/"//g' | awk -F '=' '{print $2}' `
 make ARCH=${TINYARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig
-make ARCH=${TINYARCH} CROSS_COMPILE=${CLFS_TARGET}-
+make -j $( grep -c processor /proc/cpuinfo ) ARCH=${TINYARCH} CROSS_COMPILE=${CLFS_TARGET}-
 INSTALL_MOD_PATH=${CLFS}/targetfs make ARCH=${TINYARCH} CROSS_COMPILE=${CLFS_TARGET}- modules_install || exit 1 
 mkdir -p ${CLFS}/targetfs/boot
 install -m 0644 arch/x86/boot/bzImage ${CLFS}/targetfs/boot/vmlinuz-${PKGVERSION}${localversion} || exit 1

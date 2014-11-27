@@ -67,7 +67,7 @@ cd ../gcc-build
   --with-mpfr-lib=$(pwd)/mpfr/src/.libs \
   --with-arch=${CLFS_CPU} ${ARMFLOAT} ${ARMFPU}
 
-make all-gcc all-target-libgcc -j 4  || exit 1
+make all-gcc all-target-libgcc -j $( grep -c processor /proc/cpuinfo )  || exit 1
 make install-gcc install-target-libgcc || exit 1
 
 # Clean up

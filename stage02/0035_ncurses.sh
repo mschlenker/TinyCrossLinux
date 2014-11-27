@@ -21,6 +21,7 @@ tar xvzf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz
 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 ./configure --prefix=/ --without-debug --without-ada --enable-overwrite --host=${CLFS_ARCH} --without-cxx
+make -j $( grep -c processor /proc/cpuinfo )
 make install DESTDIR=${CLFS}/cross-tools/${CLFS_TARGET}
 make install DESTDIR=${CLFS}/targetfs
 

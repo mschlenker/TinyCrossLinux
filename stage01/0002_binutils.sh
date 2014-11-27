@@ -28,7 +28,7 @@ cd ${PKGNAME}-build
    --disable-multilib \
    --disable-werror --disable-Werror 
 make configure-host
-make -j 4 || exit 1
+make -j $( grep -c processor /proc/cpuinfo ) || exit 1
 make install || exit 1
 
 # Clean up

@@ -26,7 +26,7 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 # Build and install
 
 ./configure --prefix=/usr --sysconfdir=/etc --host=${CLFS_TARGET} --without-bash-malloc
-make -j 4
+make -j $( grep -c processor /proc/cpuinfo )
 make install DESTDIR=${CLFS}/targetfs
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/bash
 ln -sf /usr/bin/bash ${CLFS}/targetfs/bin/bash
