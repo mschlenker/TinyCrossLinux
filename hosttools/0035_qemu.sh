@@ -12,11 +12,14 @@ PKGVERSION=2.2.0
 
 [ -f ${SRCDIR}/qemu-${PKGVERSION}.tar.bz2 ] || wget -O ${SRCDIR}/qemu-${PKGVERSION}.tar.bz2 \
 	http://wiki.qemu-project.org/download/qemu-${PKGVERSION}.tar.bz2
+[ -f ${SRCDIR}/qemu-2.1.2-virtfs-proxy-helper.patch ] || wget -O ${SRCDIR}/qemu-2.1.2-virtfs-proxy-helper.patch \
+	http://distfiles.lesslinux.org/qemu-2.1.2-virtfs-proxy-helper.patch
 
 # Prepare build:
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION} -xvjf ${SRCDIR}/qemu-${PKGVERSION}.tar.bz2
+( cd  ${CLFS}/build/${PKGNAME}-${PKGVERSION}/qemu-${PKGVERSION} ; cat ${SRCDIR}/qemu-2.1.2-virtfs-proxy-helper.patch | patch -p 1 )
 
 # Build and install
 
