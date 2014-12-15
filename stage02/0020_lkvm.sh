@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=kvm
-PKGVERSION=20140617
+PKGVERSION=20141212
 
 case ${CLFS_ARCH} in
 	x86)
@@ -18,14 +18,14 @@ esac
 
 # Download:
 
-[ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2 ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2 \
-	http://distfiles.lesslinux.org/${PKGNAME}-${PKGVERSION}.tar.bz2
+[ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz \
+	http://distfiles.lesslinux.org/${PKGNAME}-${PKGVERSION}.tar.xz
 
 # Prepare build:
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
-tar xvjf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2
+tar xvJf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz
 
 # Build and install
 
