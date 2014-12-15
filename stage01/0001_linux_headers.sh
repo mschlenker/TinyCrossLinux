@@ -3,7 +3,7 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=linux-headers
-PKGVERSION=3.17.4
+PKGVERSION=3.17.6
 
 # Download
 
