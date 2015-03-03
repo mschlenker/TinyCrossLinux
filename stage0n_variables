@@ -18,6 +18,15 @@
 # export CLFS_FPU=vfp
 # export CLFS_FLOAT=hard
 # export TINYBUILDDIR=/mnt/archiv/TinyCrossBuildPi
+#
+# This matches Banana Pi - currently under development
+#
+# export TINYTARGET=arm-linux-musleabihf 
+# export TINYARCH=arm
+# export TINYCPU=armv7-a
+# export CLFS_FPU=neon-vfpv4
+# export CLFS_FLOAT=hard
+# export TINYBUILDDIR=/mnt/archiv/TinyCrossBuildBPi
 
 CLFS=/mnt/archiv/TinyCrossBuild
 if [ -n "$TINYBUILDDIR" ] ; then
