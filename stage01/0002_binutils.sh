@@ -3,7 +3,7 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=binutils
-PKGVERSION=2.24
+PKGVERSION=2.25
 
 # Download:
 

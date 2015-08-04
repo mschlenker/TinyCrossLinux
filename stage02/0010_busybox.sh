@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=busybox
-PKGVERSION=1.22.1
+PKGVERSION=1.23.2
 
 # Download:
 
