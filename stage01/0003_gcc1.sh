@@ -9,12 +9,12 @@ PKGVERSION=4.7.4
 
 [ -f ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2 ] || wget -O ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2 \
 	http://gcc.cybermirror.org/releases/gcc-${PKGVERSION}/gcc-${PKGVERSION}.tar.bz2
-[ -f ${SRCDIR}/mpfr-3.1.2.tar.xz ] || wget -O ${SRCDIR}/mpfr-3.1.2.tar.xz \
-	http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz 
+[ -f ${SRCDIR}/mpfr-3.1.3.tar.xz ] || wget -O ${SRCDIR}/mpfr-3.1.3.tar.xz \
+	http://www.mpfr.org/mpfr-current/mpfr-3.1.3.tar.xz 
 [ -f ${SRCDIR}/gmp-6.0.0a.tar.xz ] || wget -O ${SRCDIR}/gmp-6.0.0a.tar.xz \
 	https://gmplib.org/download/gmp/gmp-6.0.0a.tar.xz
-[ -f ${SRCDIR}/mpc-1.0.2.tar.gz  ] || wget -O ${SRCDIR}/mpc-1.0.2.tar.gz \
-	ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.2.tar.gz
+[ -f ${SRCDIR}/mpc-1.0.3.tar.gz  ] || wget -O ${SRCDIR}/mpc-1.0.3.tar.gz \
+	ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz
 [ -f gcc-4.7.3-musl-1.patch ] || wget -O ${SRCDIR}/gcc-4.7.3-musl-1.patch \
 	http://distfiles.lesslinux.org/gcc-4.7.3-musl-1.patch
 
@@ -29,12 +29,12 @@ tar xvjf ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2
 mkdir gcc-build
 cd gcc-${PKGVERSION}
 cat ${SRCDIR}/gcc-4.7.3-musl-1.patch | patch -p1 
-tar xJf ${SRCDIR}/mpfr-3.1.2.tar.xz
-mv -v mpfr-3.1.2 mpfr
+tar xJf ${SRCDIR}/mpfr-3.1.3.tar.xz
+mv -v mpfr-3.1.3 mpfr
 tar xJf ${SRCDIR}/gmp-6.0.0a.tar.xz
 mv -v gmp-6.0.0 gmp
-tar xf ${SRCDIR}/mpc-1.0.2.tar.gz
-mv -v mpc-1.0.2 mpc
+tar xf ${SRCDIR}/mpc-1.0.3.tar.gz
+mv -v mpc-1.0.3 mpc
 
 case ${CLFS_TARGET} in
 	*arm*)

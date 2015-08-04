@@ -16,12 +16,12 @@ tar xvjf ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2
 mkdir gcc-build
 cd gcc-${PKGVERSION}
 cat ${SRCDIR}/gcc-4.7.3-musl-1.patch | patch -p1
-tar xJf ${SRCDIR}/mpfr-3.1.2.tar.xz
-mv -v mpfr-3.1.2 mpfr
+tar xJf ${SRCDIR}/mpfr-3.1.3.tar.xz
+mv -v mpfr-3.1.3 mpfr
 tar xJf ${SRCDIR}/gmp-6.0.0a.tar.xz
 mv -v gmp-6.0.0 gmp
-tar xf ${SRCDIR}/mpc-1.0.2.tar.gz
-mv -v mpc-1.0.2 mpc
+tar xf ${SRCDIR}/mpc-1.0.3.tar.gz
+mv -v mpc-1.0.3 mpc
 
 case ${CLFS_TARGET} in
 	*arm*)
