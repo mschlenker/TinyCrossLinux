@@ -26,6 +26,9 @@ sed -i 's/\(CONFIG_IFPLUGD\)=y/# \1 is not set/' .config
 sed -i 's/\(CONFIG_FEATURE_IPV6\)=y/# \1 is not set/' .config
 sed -i 's/\(CONFIG_FEATURE_IFUPDOWN_IPV6\)=y/# \1 is not set/' .config
 sed -i 's/CONFIG_BRCTL=y/# CONFIG_BRCTL is not set/g' .config
+sed -i 's/CONFIG_FEATURE_WTMP=y/# CONFIG_FEATURE_WTMP is not set/g' .config
+sed -i 's/CONFIG_FEATURE_UTMP=y/# CONFIG_FEATURE_UTMP is not set/g' .config
+sed -i 's/CONFIG_FEATURE_UPTIME_UTMP=y/# CONFIG_FEATURE_UPTIME_UTMP is not set/g' .config
 
 # Use the environment variable TINYBBSTATIC=1 to compile static busybox
 case "$TINYBBSTATIC" in
