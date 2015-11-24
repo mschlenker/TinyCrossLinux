@@ -85,5 +85,4 @@ I will also write a script to select certain modules and subdirectories from the
 Probably there are some. I already ran into those:
 
  * You have to boot with a connected ethernet cable, otherwise udhcpc will try nearly forever to get a lease.
- * Some kernel modules complain about unresolved symbols - I will add loading of some prerequisite modules in the next days.
  * Some firmware is missing - I will provide you with a script to automatically install firmware for the linux-firmware collection for kernel modules installed, in the meantime add those blobs by hand.
