@@ -3,11 +3,11 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=linux-headers
-PKGVERSION=4.1.4
+PKGVERSION=4.1.13
 
 # Download
 
-[ -f ${SRCDIR}/linux-3.17.tar.xz ] || wget -O ${SRCDIR}/linux-4.1.tar.xz \
+[ -f ${SRCDIR}/linux-4.1.tar.xz ] || wget -O ${SRCDIR}/linux-4.1.tar.xz \
 	https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
 [ -f ${SRCDIR}/patch-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
 	https://www.kernel.org/pub/linux/kernel/v4.x/patch-${PKGVERSION}.xz

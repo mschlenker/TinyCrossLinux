@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=ntfs-3g_ntfsprogs
-PKGVERSION=2014.2.15
+PKGVERSION=2015.2.15
 
 # Download:
 

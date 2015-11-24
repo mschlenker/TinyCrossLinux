@@ -2,7 +2,7 @@
 source stage0n_variables
 
 PKGNAME=gummiboot
-PKGVERSION=45
+PKGVERSION=48
 
 case ${CLFS_ARCH} in
 	x86)
