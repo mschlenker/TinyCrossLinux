@@ -3,7 +3,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=basefiles
-PKGVERSION=20140727
+PKGVERSION=20151124
  
 # Build and install
 mkdir -p ${CLFS}/targetfs/etc/rc.d

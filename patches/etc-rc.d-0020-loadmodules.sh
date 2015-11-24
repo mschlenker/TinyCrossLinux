@@ -8,6 +8,10 @@ case $1 in
     start)
 	kversion=` uname -r `
 	alreadyloaded=""
+	printf "${bold}Generating modules.dep... ${normal}\n"
+	( cd /lib/modules/` uname -r `; depmod )
+	rm /lib/modules/` uname -r `/modules.dep
+	ln -s /lib/modules/` uname -r `/modules.dep.bb /lib/modules/` uname -r `/modules.dep
 	printf "${bold}Loading MISC drivers... ${normal}\n"
 	for n in jbd zlib_deflate libcrc32c scsi_mod libata ata_generic ata_piix mii libahci \
 		ahci usb_common usbcore xhci_hcd uhci_hcd ohci_hcd ohci_pci \
