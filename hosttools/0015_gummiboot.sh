@@ -29,8 +29,8 @@ tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION} -xvzf ${SRCDIR}/${PKGNAME}-${PKGVE
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 bash autogen.sh
 ./configure --prefix=${CLFS}/hosttools
-make || exit 1
-make install || exit 1
+make # || exit 1
+make install # || exit 1
 
 # Clean up
 
