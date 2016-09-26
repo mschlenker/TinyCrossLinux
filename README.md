@@ -3,7 +3,7 @@ TinyCrossLinux
 
 > Be careful!
 >
-> I am currently updating lots of stuff, this currently means bootloader generation is broken, which results in unbootable ISO images. The resulting rootfs directory can still be used to build an initramfs or chroot into.
+> I am currently updating lots of stuff, this currently means bootloader generation is broken, which results in unbootable ISO images on UEFI. The BIOS ISO works. The resulting rootfs directory can still be used to build an initramfs or chroot into.
 
 This repository contains scripts, build definitions and patches to build a minimal linux distribution running from initramfs. It's primary purpose is to teach the minimal requirements of a working linux system. If you just run our scripts you will end up with a small linux (between 5MB and 50MB) that allows you to login via SSH. Your phantasy and some scripts will expand this linux to a great deployment system or a platform for forensic analysis.
 
