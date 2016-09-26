@@ -1,6 +1,10 @@
 TinyCrossLinux
 ==============
 
+> Be careful!
+>
+> I am currently updating lots of stuff, this currently means bootloader generation is broken, which results in unbootable ISO images. The resulting rootfs directory can still be used to build an initramfs or chroot into.
+
 This repository contains scripts, build definitions and patches to build a minimal linux distribution running from initramfs. It's primary purpose is to teach the minimal requirements of a working linux system. If you just run our scripts you will end up with a small linux (between 5MB and 50MB) that allows you to login via SSH. Your phantasy and some scripts will expand this linux to a great deployment system or a platform for forensic analysis.
 
 Our TinyCrossLinux is initially based on "Cross Linux from Scratch" (embedded). It uses an initramfs instead of a classic root file system. The boot scripts use a layout that is inspired by Berkeley Unix (BSD). Boot the system and take a look at `/etc/rc.d`. The scripts here will be executed in the order they appear (they will be called with the argument "start"). At shutdown the scripts will be called in reverse order (with argument stop).
