@@ -4,7 +4,7 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=musl
-PKGVERSION=1.1.12
+PKGVERSION=1.1.15
 
 # Download:
 
@@ -26,7 +26,7 @@ done
 CFLAGS=-fno-toplevel-reorder \
 CC=${CLFS_TARGET}-gcc \
 ./configure \
-  --prefix=/ \
+  --prefix=/   \
   --target=${CLFS_TARGET}
 CFLAGS=-fno-toplevel-reorder CC=${CLFS_TARGET}-gcc make -j $( grep -c processor /proc/cpuinfo ) || exit 1
 mkdir -p ${CLFS}/cross-tools/${CLFS_TARGET}/lib

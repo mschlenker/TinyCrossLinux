@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=busybox
-PKGVERSION=1.24.1
+PKGVERSION=1.24.2
 
 # Download:
 
@@ -37,6 +37,29 @@ case "$TINYBBSTATIC" in
 	;;
 esac
 
+for header in linux/kd.h linux/types.h linux/posix_types.h linux/stddef.h linux/vt.h \
+	linux/version.h linux/loop.h linux/fb.h linux/i2c.h linux/hdreg.h linux/i2c-dev.h \
+	linux/major.h linux/raid/md_u.h linux/watchdog.h linux/ioctl.h linux/if.h \
+	linux/libc-compat.h linux/socket.h linux/hdlc/ioctl.h linux/if_slip.h \
+	linux/if_ether.h linux/if_bonding.h linux/sockios.h linux/ethtool.h \
+	linux/sysinfo.h linux/kernel.h linux/netlink.h linux/rtnetlink.h linux/if_link.h \
+	linux/if_addr.h linux/neighbour.h linux/fs.h linux/limits.h \
+	linux/netfilter_ipv4.h linux/netfilter.h linux/sysctl.h linux/if_tun.h \
+	linux/byteorder/big_endian.h linux/byteorder/little_endian.h linux/swab.h \
+	linux/filter.h linux/bpf_common.h linux/if_vlan.h linux/if_arp.h \
+	linux/if_packet.h linux/netdevice.h linux/input.h linux/input-event-codes.h \
+	linux/fd.h ; do
+	tar -C ${CLFS}/cross-tools/${CLFS_TARGET}/include/kernel/ -cvf - $header | \
+		tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}/include -xf - 
+done
+
+for header in linux/in6.h linux/in.h ; do
+	rm ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}/include/${header}
+	touch ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}/include/${header}
+done
+
+
+
 ARCH="${CLFS_ARCH}" CROSS_COMPILE="${CLFS_TARGET}-" make || exit 1
 ARCH="${CLFS_ARCH}" CROSS_COMPILE="${CLFS_TARGET}-" make  \
   CONFIG_PREFIX="${CLFS}/targetfs" install || exit 1 
@@ -47,4 +70,3 @@ ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/bin/busybox
 # Clean up
 cd ${CLFS}/build
 rm -rf ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
-

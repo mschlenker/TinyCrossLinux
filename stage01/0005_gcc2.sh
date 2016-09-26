@@ -3,7 +3,10 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=gcc-step2
-PKGVERSION=4.7.4
+PKGVERSION=6.2.0
+MPFR=3.1.4
+GMP=6.1.1
+MPC=1.0.3
 
 # Prepare build:
 
@@ -15,13 +18,13 @@ tar xvjf ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2
 
 mkdir gcc-build
 cd gcc-${PKGVERSION}
-cat ${SRCDIR}/gcc-4.7.3-musl-1.patch | patch -p1
-tar xJf ${SRCDIR}/mpfr-3.1.3.tar.xz
-mv -v mpfr-3.1.3 mpfr
-tar xJf ${SRCDIR}/gmp-6.0.0a.tar.xz
-mv -v gmp-6.0.0 gmp
-tar xf ${SRCDIR}/mpc-1.0.3.tar.gz
-mv -v mpc-1.0.3 mpc
+# cat ${SRCDIR}/gcc-4.7.3-musl-1.patch | patch -p1 
+tar xJf ${SRCDIR}/mpfr-${MPFR}.tar.xz
+mv -v mpfr-${MPFR} mpfr
+tar xf ${SRCDIR}/gmp-${GMP}.tar.lz
+mv -v gmp-${GMP} gmp
+tar xf ${SRCDIR}/mpc-${MPC}.tar.gz
+mv -v mpc-${MPC} mpc
 
 case ${CLFS_TARGET} in
 	*arm*)
@@ -49,6 +52,10 @@ cd ../gcc-build
 
 make -j $( grep -c processor /proc/cpuinfo ) || exit 1
 make install || exit 1
+
+# We should not need kernel headers anymore:
+mkdir -pv ${CLFS}/cross-tools/${CLFS_TARGET}/include/kernel
+mv ${CLFS}/cross-tools/${CLFS_TARGET}/include/linux ${CLFS}/cross-tools/${CLFS_TARGET}/include/kernel/
 
 # Clean up
 

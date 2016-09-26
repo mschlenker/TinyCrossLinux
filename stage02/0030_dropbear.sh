@@ -5,7 +5,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=dropbear
-PKGVERSION=2015.68
+PKGVERSION=2016.74
 
 # Download:
 
@@ -22,8 +22,8 @@ tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION} -xvjf ${SRCDIR}/${PKGNAME}-${PKGVE
 workdir=` pwd ` 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 sed -i 's/.*mandir.*//g' Makefile.in
-CC="${CC} -Os" ./configure --prefix=/usr --host=${CLFS_TARGET}
-make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp" || exit 1
+CC="${CC} -Os -I${CLFS}/cross-tools/${CLFS_TARGET}/include/kernel" ./configure --prefix=/usr --host=${CLFS_TARGET}
+make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"  || exit 1
 make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp" install DESTDIR=${CLFS}/targetfs || exit 1
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/dropbearmulti
 install -dv ${CLFS}/targetfs/etc/dropbear

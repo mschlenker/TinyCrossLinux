@@ -4,7 +4,8 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=linux
-PKGVERSION=4.1.13
+PKGVERSION=4.7.5
+MAJOR=4.7
 
 if which bc ; then
 	echo '---> bc found in path continuing...'
@@ -25,8 +26,8 @@ esac
 
 # Download:
 
-[ -f ${SRCDIR}/${PKGNAME}-4.1.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-4.1.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
+[ -f ${SRCDIR}/${PKGNAME}-${MAJOR}.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-${MAJOR}.tar.xz \
+	https://www.kernel.org/pub/linux/kernel/v4.x/linux-${MAJOR}.tar.xz
 [ -f ${SRCDIR}/patch-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${PKGVERSION}.xz
 
@@ -34,8 +35,8 @@ esac
 wdir=` pwd `
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
-tar xvJf ${SRCDIR}/${PKGNAME}-4.1.tar.xz
-cd ${PKGNAME}-4.1
+tar xvJf ${SRCDIR}/${PKGNAME}-${MAJOR}.tar.xz
+cd ${PKGNAME}-${MAJOR}
 unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
 # should be fixed in 3.17.5
 # sed -i 's%shell objdump%shell $(OBJDUMP)%g' arch/x86/boot/compressed/Makefile
@@ -46,7 +47,7 @@ KCONFIG="${wdir}/patches/config-3.17.3"
 cp -v "$KCONFIG" .config
 yes '' | make oldconfig
 cd ..
-mv ${PKGNAME}-4.1 ${PKGNAME}-${PKGVERSION}
+mv ${PKGNAME}-${MAJOR} ${PKGNAME}-${PKGVERSION}
 
 # Build and install
 TINYARCH=x86_64

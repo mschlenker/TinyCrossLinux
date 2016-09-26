@@ -6,7 +6,7 @@
 source stage0n_variables
 
 PKGNAME=dropbear-host
-PKGVERSION=2015.67
+PKGVERSION=2016.74
 
 # Download:
 
@@ -24,8 +24,8 @@ workdir=` pwd `
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/dropbear-${PKGVERSION}
 sed -i 's/.*mandir.*//g' Makefile.in
 ./configure --prefix=${CLFS}/hosttools
-make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp" || exit 1
-make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp" install || exit 1
+make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"  || exit 1
+make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"  install || exit 1
 
 # Clean up
 

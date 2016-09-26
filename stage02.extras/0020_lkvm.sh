@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=kvm
-PKGVERSION=20141212
+PKGVERSION=20150609
 
 case ${CLFS_ARCH} in
 	x86)
@@ -34,7 +34,7 @@ make clean
 make defconfig
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/linux-kvm/tools/kvm
 make clean
-make -j $( grep -c processor /proc/cpuinfo ) WERROR=0 CROSS_COMPILE=${CLFS_TARGET}-
+CFLAGS="-I${CLFS}/cross-tools/${CLFS_TARGET}/include/kernel" make -j $( grep -c processor /proc/cpuinfo ) WERROR=0 CROSS_COMPILE=${CLFS_TARGET}-
 install -m 0755 lkvm ${CLFS}/targetfs/usr/bin || exit 1 
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/lkvm
 
