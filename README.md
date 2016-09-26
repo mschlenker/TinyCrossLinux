@@ -35,6 +35,10 @@ So to build TinyCrossLinux run
 	
 ## FAQ
 
+### Build packages with dependencies to linux-headers
+
+I move the Linux headers from "include/linux" to "include/kernel/linux" to prevent buildscripts finding them. The simple reason for this is that some programs are not aware which structs are provided by musl and which by the kernel. In case you need the kernel headers, first try with gcc -I path/to/kernel. If this fails, take a look at the busybox build script: there I copy a subset of the kernel headers and simple touch a few others. 
+
 ### Start services
 
 Currently the following services provided by BusyBox or dropbearmulti are available. They are inactive by default, so use the bootparameters specified to enable them:
