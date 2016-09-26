@@ -27,8 +27,8 @@ tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION} -xvJf ${SRCDIR}/${PKGNAME}-${PKGVE
 # Build and install
 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
-make clean
-make || exit 1
+# make clean
+# make || exit 1
 mkdir -p ${CLFS}/hosttools/share/syslinux
 tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION} -cvf - . | tar -C ${CLFS}/hosttools/share/syslinux -xf - 
 
