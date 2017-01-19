@@ -28,11 +28,11 @@ tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION} -xvf ${SRCDIR}/${PKGNAME}_${PKGVER
 
 # Patch 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
-cat ../debian/patches/series | while read fname ; do cat ../debian/patches/$fname | patch -p1; done
+# cat ../debian/patches/series | while read fname ; do cat ../debian/patches/$fname | patch -p1; done
 
 # Build and install
-make clean
-make || exit 1
+# make clean
+# make || exit 1
 mkdir -p ${CLFS}/hosttools/share/syslinux
 tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION} -cvf - . | tar -C ${CLFS}/hosttools/share/syslinux -xf - 
 
