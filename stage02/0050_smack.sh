@@ -20,6 +20,8 @@ tar xvf ${SRCDIR}/v${PKGVERSION}.tar.gz
 
 # Build and install
 
+export CPPFLAGS=-I${CLFS}/targetfs/${CLFS_TARGET}/include/kernel
+
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 bash autogen.sh
 ./configure --prefix=/usr --host=${CLFS_TARGET}
