@@ -16,7 +16,7 @@ PKGVERSION=1.3.0
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
-tar xvJf ${SRCDIR}/v${PKGVERSION}.tar.gz
+tar xvf ${SRCDIR}/v${PKGVERSION}.tar.gz
 
 # Build and install
 
