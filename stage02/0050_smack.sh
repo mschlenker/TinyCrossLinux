@@ -20,10 +20,11 @@ tar xvf ${SRCDIR}/v${PKGVERSION}.tar.gz
 
 # Build and install
 
-export CPPFLAGS=-I${CLFS}/targetfs/${CLFS_TARGET}/include/kernel
+export CPPFLAGS=-I${CLFS}/cross-tools/${CLFS_TARGET}/include/kernel
 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 bash autogen.sh
+make clean
 ./configure --prefix=/usr --host=${CLFS_TARGET}
 make || exit 1
 make install DESTDIR=${CLFS}/targetfs || exit 1
