@@ -4,7 +4,7 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=musl
-PKGVERSION=1.1.15
+PKGVERSION=1.1.16
 
 # Download:
 
