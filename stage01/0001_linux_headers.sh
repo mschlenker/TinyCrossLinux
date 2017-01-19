@@ -15,7 +15,7 @@ MAJOR=4.7
 
 # Prepare build:
 
-mkdihr -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
+mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvJf ${SRCDIR}/linux-${MAJOR}.tar.xz || exit 1
 cd linux-${MAJOR}
