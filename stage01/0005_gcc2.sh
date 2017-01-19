@@ -4,8 +4,8 @@ source stage01_variables
 
 PKGNAME=gcc-step2
 PKGVERSION=6.2.0
-MPFR=3.1.4
-GMP=6.1.1
+MPFR=3.1.5
+GMP=6.1.2
 MPC=1.0.3
 
 # Prepare build:
@@ -20,11 +20,11 @@ mkdir gcc-build
 cd gcc-${PKGVERSION}
 # cat ${SRCDIR}/gcc-4.7.3-musl-1.patch | patch -p1 
 tar xJf ${SRCDIR}/mpfr-${MPFR}.tar.xz
-mv -v mpfr-${MPFR} mpfr
+mv -v mpfr-${MPFR} mpfr || exit 1
 tar xf ${SRCDIR}/gmp-${GMP}.tar.lz
-mv -v gmp-${GMP} gmp
+mv -v gmp-${GMP} gmp || exit 1
 tar xf ${SRCDIR}/mpc-${MPC}.tar.gz
-mv -v mpc-${MPC} mpc
+mv -v mpc-${MPC} mpc || exit 1 
 
 case ${CLFS_TARGET} in
 	*arm*)
