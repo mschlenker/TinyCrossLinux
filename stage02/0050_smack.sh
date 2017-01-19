@@ -27,7 +27,7 @@ bash autogen.sh
 make clean
 ./configure --prefix=/usr --host=${CLFS_TARGET}
 make || exit 1
-make install DESTDIR=${CLFS}/targetfs || exit 1
+make install DESTDIR=${CLFS}/targetfs
 
 # Clean up
 
