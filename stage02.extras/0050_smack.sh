@@ -14,6 +14,7 @@ PKGVERSION=1.3.0
 
 # Prepare build:
 
+workdir=` pwd ` 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvf ${SRCDIR}/v${PKGVERSION}.tar.gz
@@ -28,6 +29,7 @@ make clean
 ./configure --prefix=/usr --host=${CLFS_TARGET}
 make || exit 1
 make install DESTDIR=${CLFS}/targetfs
+install -m 0755 ${workdir}/patches/etc-rc.d-0010-smack.sh ${CLFS}/targetfs/etc/rc.d/0010-smack.sh
 
 # Clean up
 
