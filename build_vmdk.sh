@@ -26,7 +26,7 @@ for bin in parted kpartx dmsetup mkfs.ext4 mkfs.msdos qemu-img  ; do
 	fi
 done
  
-[ -z "$SYSTEMSIZE" ] && SYSTEMSIZE=224
+[ -z "$SYSTEMSIZE" ] && SYSTEMSIZE=480
 [ -z "$EFISIZE" ] && EFISIZE=32
 
 # Remove old build directories, create new ones:
