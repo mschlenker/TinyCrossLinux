@@ -34,6 +34,7 @@ done
 rm -rf "${CLFS}/vmdk-system.mnt"
 rm -rf "${CLFS}/vmdk-boot.mnt"
 rm -rf "${CLFS}/vmdk-full.img"
+rm -rf "${CLFS}/tinycross.vmdk"
 
 mkdir -p "${CLFS}/vmdk-boot.mnt"
 mkdir -p "${CLFS}/vmdk-system.mnt"
