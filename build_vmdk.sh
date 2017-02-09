@@ -17,7 +17,7 @@ case ${CLFS_ARCH} in
 	;;
 esac
 
-for bin in parted kpartx dmsetup mkfs.ext4 mkfs.msdos ; do
+for bin in parted kpartx dmsetup mkfs.ext4 mkfs.msdos qemu-img  ; do
 	if which $bin ; then
 		echo "$bin found"
 	else
@@ -130,5 +130,7 @@ dmsetup remove /dev/mapper/${freeloop#/dev/}p1
 dd if="${CLFS}/hosttools/share/syslinux/bios/mbr/gptmbr.bin" of=${freeloop} conv=notrunc
 sync
 losetup -d $freeloop
+sleep 1
+qemu-img convert -f raw -O vmdk "${CLFS}/vmdk-full.img" "${CLFS}/tinycross.vmdk" && rm "${CLFS}/vmdk-full.img"
 
  
