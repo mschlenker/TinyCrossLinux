@@ -4,3 +4,4 @@ for i in ` ls /etc/rc.d/[0-9][0-9][0-9][0-9]-*.?? | tac ` ; do
 	$i stop
 done
 
+mount -o remount,ro /
