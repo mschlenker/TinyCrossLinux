@@ -3,7 +3,7 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=gcc-step1
-PKGVERSION=6.2.0
+PKGVERSION=6.3.0
 MPFR=3.1.5
 GMP=6.1.2
 MPC=1.0.3
@@ -64,8 +64,13 @@ cd ../gcc-build
   --disable-libatomic \
   --disable-libquadmath \
   --disable-threads \
-  --enable-languages=c \
+  --enable-languages=c,c++ \
   --disable-multilib \
+  --disable-libmpx                               \
+  --disable-libvtv                               \
+  --disable-libstdcxx                            \
+  --disable-libitm \
+  --disable-libsanitizer \
   --with-mpfr-include=$(pwd)/../gcc-${PKGVERSION}/mpfr/src \
   --with-mpfr-lib=$(pwd)/mpfr/src/.libs \
   --with-arch=${CLFS_CPU} ${ARMFLOAT} ${ARMFPU}

@@ -3,7 +3,7 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=gcc-step2
-PKGVERSION=6.2.0
+PKGVERSION=6.3.0
 MPFR=3.1.5
 GMP=6.1.2
 MPC=1.0.3
@@ -40,12 +40,14 @@ cd ../gcc-build
   --target=${CLFS_TARGET} \
   --host=${CLFS_HOST} \
   --with-sysroot=${CLFS}/cross-tools/${CLFS_TARGET} \
+  --enable-languages=c,c++                       \
+  --disable-libstdcxx-pch                        \
+  --disable-multilib                             \
+  --disable-bootstrap                            \
+  --disable-libgomp \
   --disable-nls \
-  --enable-languages=c \
-  --enable-c99 \
-  --enable-long-long \
-  --disable-libmudflap \
-  --disable-multilib \
+  --disable-libitm \
+  --disable-libsanitizer \            \
   --with-mpfr-include=$(pwd)/../gcc-${PKGVERSION}/mpfr/src \
   --with-mpfr-lib=$(pwd)/mpfr/src/.libs \
   --with-arch=${CLFS_CPU} ${ARMFLOAT} ${ARMFPU}
