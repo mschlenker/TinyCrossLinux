@@ -18,7 +18,7 @@ esac
  
 [ -f ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.xz \
 	https://www.kernel.org/pub/linux/utils/boot/syslinux/${PKGNAME}-${PKGVERSION}.tar.xz
-[ -f ${SRCDIR}/${PKGNAME}_${PKGVERSION}+dfsg-11ubuntu1.debian.tar.xz ]  || wget -O ${PKGNAME}_${PKGVERSION}+dfsg-11ubuntu1.debian.tar.xz \
+[ -f ${SRCDIR}/${PKGNAME}_${PKGVERSION}+dfsg-11ubuntu1.debian.tar.xz ]  || wget -O ${SRCDIR}/${PKGNAME}_${PKGVERSION}+dfsg-11ubuntu1.debian.tar.xz \
 	https://launchpad.net/ubuntu/+archive/primary/+files/${PKGNAME}_${PKGVERSION}+dfsg-11ubuntu1.debian.tar.xz
 # Prepare build:
 
