@@ -3,8 +3,8 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=linux-headers
-PKGVERSION=4.7.5
-MAJOR=4.7
+PKGVERSION=4.12.3
+MAJOR=4.12
 
 # Download
 

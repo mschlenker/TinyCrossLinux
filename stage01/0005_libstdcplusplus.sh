@@ -3,13 +3,13 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=libstdcplusplus
-PKGVERSION=6.3.0
+PKGVERSION=6.4.0
 
 # Prepare build:
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
-tar xvjf ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2
+tar xvf ${SRCDIR}/gcc-${PKGVERSION}.tar.xz
 
 # Build and install
 

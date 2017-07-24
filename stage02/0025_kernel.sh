@@ -4,8 +4,8 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=linux
-PKGVERSION=4.7.5
-MAJOR=4.7
+PKGVERSION=4.12.3
+MAJOR=4.12
 
 if which bc ; then
 	echo '---> bc found in path continuing...'

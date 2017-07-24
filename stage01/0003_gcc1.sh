@@ -3,15 +3,15 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=gcc-step1
-PKGVERSION=6.3.0
+PKGVERSION=6.4.0
 MPFR=3.1.5
 GMP=6.1.2
 MPC=1.0.3
 
 # Download:
 
-[ -f ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2 ] || wget -O ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2 \
-	ftp://ftp.mpi-sb.mpg.de/pub/gnu/mirror/gcc.gnu.org/pub/gcc/releases/gcc-${PKGVERSION}/gcc-${PKGVERSION}.tar.bz2
+[ -f ${SRCDIR}/gcc-${PKGVERSION}.tar.xz ] || wget -O ${SRCDIR}/gcc-${PKGVERSION}.tar.xz \
+	ftp://ftp.mpi-sb.mpg.de/pub/gnu/mirror/gcc.gnu.org/pub/gcc/releases/gcc-${PKGVERSION}/gcc-${PKGVERSION}.tar.xz
 [ -f ${SRCDIR}/mpfr-${MPFR}.tar.xz ] || wget -O ${SRCDIR}/mpfr-${MPFR}.tar.xz \
 	http://www.mpfr.org/mpfr-current/mpfr-${MPFR}.tar.xz 
 [ -f ${SRCDIR}/gmp-${GMP}.tar.lz ] || wget -O ${SRCDIR}/gmp-${GMP}.tar.lz \
@@ -25,7 +25,7 @@ MPC=1.0.3
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
-tar xvjf ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2
+tar xvf ${SRCDIR}/gcc-${PKGVERSION}.tar.xz
 
 # Build and install
 

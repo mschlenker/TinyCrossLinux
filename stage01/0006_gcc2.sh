@@ -3,7 +3,7 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=gcc-step2
-PKGVERSION=6.3.0
+PKGVERSION=6.4.0
 MPFR=3.1.5
 GMP=6.1.2
 MPC=1.0.3
@@ -12,7 +12,7 @@ MPC=1.0.3
 
 mkdir -p ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
-tar xvjf ${SRCDIR}/gcc-${PKGVERSION}.tar.bz2
+tar xvf ${SRCDIR}/gcc-${PKGVERSION}.tar.xz
 
 # Build and install
 
