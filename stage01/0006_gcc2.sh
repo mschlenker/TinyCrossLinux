@@ -18,6 +18,15 @@ tar xvf ${SRCDIR}/gcc-${PKGVERSION}.tar.xz
 
 mkdir gcc-build
 cd gcc-${PKGVERSION}
+
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h >  `dirname $(${CLFS}/cross-tools/bin/${CLFS_TARGET}-gcc -print-libgcc-file-name)`/include-fixed/limits.h
+
+case $(uname -m) in
+  x86_64)
+    sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+  ;;
+esac
+
 # cat ${SRCDIR}/gcc-4.7.3-musl-1.patch | patch -p1 
 tar xJf ${SRCDIR}/mpfr-${MPFR}.tar.xz
 mv -v mpfr-${MPFR} mpfr || exit 1
@@ -47,7 +56,7 @@ cd ../gcc-build
   --disable-libgomp \
   --disable-nls \
   --disable-libitm \
-  --disable-libsanitizer \            \
+  --disable-libsanitizer \
   --with-mpfr-include=$(pwd)/../gcc-${PKGVERSION}/mpfr/src \
   --with-mpfr-lib=$(pwd)/mpfr/src/.libs \
   --with-arch=${CLFS_CPU} ${ARMFLOAT} ${ARMFPU}
