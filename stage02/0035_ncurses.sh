@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=ncurses
-PKGVERSION=6.0
+PKGVERSION=6.3
 
 # Download:
 

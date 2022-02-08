@@ -3,10 +3,10 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=gcc-step2
-PKGVERSION=6.4.0
-MPFR=3.1.5
-GMP=6.1.2
-MPC=1.0.3
+PKGVERSION=11.2.0
+MPFR=4.1.0
+GMP=6.2.1
+MPC=1.2.1
 
 # Prepare build:
 

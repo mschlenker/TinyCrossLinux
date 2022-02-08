@@ -4,8 +4,8 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=linux
-PKGVERSION=4.12.3
-MAJOR=4.12
+PKGVERSION=5.15.19
+MAJOR=5.15
 
 if which bc ; then
 	echo '---> bc found in path continuing...'
@@ -27,9 +27,9 @@ esac
 # Download:
 
 [ -f ${SRCDIR}/${PKGNAME}-${MAJOR}.tar.xz ] || wget -O ${SRCDIR}/${PKGNAME}-${MAJOR}.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v4.x/linux-${MAJOR}.tar.xz
+	https://www.kernel.org/pub/linux/kernel/v5.x/linux-${MAJOR}.tar.xz
 [ -f ${SRCDIR}/patch-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
-        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${PKGVERSION}.xz
+        https://www.kernel.org/pub/linux/kernel/v5.x/patch-${PKGVERSION}.xz
 
 # Prepare build:
 wdir=` pwd `
@@ -45,7 +45,7 @@ unxz -c ${SRCDIR}/patch-${PKGVERSION}.xz | patch -p1
 KCONFIG="${wdir}/patches/config-3.17.3"
 [ -n "$TINYKCONFIG" ] && KCONFIG="$TINYKCONFIG"
 cp -v "$KCONFIG" .config
-yes '' | make oldconfig
+yes '' | make syncconfig
 cd ..
 mv ${PKGNAME}-${MAJOR} ${PKGNAME}-${PKGVERSION}
 

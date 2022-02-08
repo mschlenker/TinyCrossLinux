@@ -6,7 +6,7 @@
 source stage0n_variables
 
 PKGNAME=qemu-host
-PKGVERSION=2.7.0
+PKGVERSION=2.12.1
 
 # Download:
 

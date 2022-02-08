@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=zlib
-PKGVERSION=1.2.8
+PKGVERSION=1.2.11
 
 # Download:
 

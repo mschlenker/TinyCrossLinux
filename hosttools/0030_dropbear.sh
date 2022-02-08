@@ -6,7 +6,7 @@
 source stage0n_variables
 
 PKGNAME=dropbear-host
-PKGVERSION=2016.74
+PKGVERSION=2020.81
 
 # Download:
 

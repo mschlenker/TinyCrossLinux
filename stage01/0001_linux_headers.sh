@@ -3,15 +3,15 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=linux-headers
-PKGVERSION=4.12.3
-MAJOR=4.12
+PKGVERSION=5.15.19
+MAJOR=5.15
 
 # Download
 
 [ -f ${SRCDIR}/linux-${MAJOR}.tar.xz ] || wget -O ${SRCDIR}/linux-${MAJOR}.tar.xz \
-	https://www.kernel.org/pub/linux/kernel/v4.x/linux-${MAJOR}.tar.xz
+	https://www.kernel.org/pub/linux/kernel/v5.x/linux-${MAJOR}.tar.xz
 [ -f ${SRCDIR}/patch-${PKGVERSION}.xz ] || wget -O ${SRCDIR}/patch-${PKGVERSION}.xz \
-	https://www.kernel.org/pub/linux/kernel/v4.x/patch-${PKGVERSION}.xz
+	https://www.kernel.org/pub/linux/kernel/v5.x/patch-${PKGVERSION}.xz
 
 # Prepare build:
 

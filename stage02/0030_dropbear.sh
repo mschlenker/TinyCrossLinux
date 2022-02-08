@@ -5,7 +5,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=dropbear
-PKGVERSION=2016.74
+PKGVERSION=2020.81
 
 # Download:
 

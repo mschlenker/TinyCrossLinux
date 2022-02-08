@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=busybox
-PKGVERSION=1.27.1
+PKGVERSION=1.34.1
 
 # Download:
 
@@ -18,13 +18,14 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}
 tar xvjf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.bz2
 
 # Build and install
-
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 ARCH="${CLFS_ARCH}" make defconfig
 sed -i 's/\(CONFIG_\)\(.*\)\(INETD\)\(.*\)=y/# \1\2\3\4 is not set/g' .config
 sed -i 's/\(CONFIG_IFPLUGD\)=y/# \1 is not set/' .config
 sed -i 's/\(CONFIG_FEATURE_IPV6\)=y/# \1 is not set/' .config
 sed -i 's/\(CONFIG_FEATURE_IFUPDOWN_IPV6\)=y/# \1 is not set/' .config
+sed -i 's/\(CONFIG_EJECT\)=y/# \1 is not set/' .config
+sed -i 's/\(CONFIG_FEATURE_EJECT_SCSI\)=y/# \1 is not set/' .config
 sed -i 's/CONFIG_BRCTL=y/# CONFIG_BRCTL is not set/g' .config
 sed -i 's/CONFIG_FEATURE_WTMP=y/# CONFIG_FEATURE_WTMP is not set/g' .config
 sed -i 's/CONFIG_FEATURE_UTMP=y/# CONFIG_FEATURE_UTMP is not set/g' .config
@@ -48,7 +49,7 @@ for header in linux/kd.h linux/types.h linux/posix_types.h linux/stddef.h linux/
 	linux/byteorder/big_endian.h linux/byteorder/little_endian.h linux/swab.h \
 	linux/filter.h linux/bpf_common.h linux/if_vlan.h linux/if_arp.h \
 	linux/if_packet.h linux/netdevice.h linux/input.h linux/input-event-codes.h \
-	linux/fd.h ; do
+	linux/fd.h linux/capability.h ; do
 	tar -C ${CLFS}/cross-tools/${CLFS_TARGET}/include/kernel/ -cvf - $header | \
 		tar -C ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}/include -xf - 
 done

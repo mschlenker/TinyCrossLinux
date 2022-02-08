@@ -2,7 +2,7 @@
 source stage0n_variables
 
 PKGNAME=xorriso
-PKGVERSION=1.4.6
+PKGVERSION=1.5.4
 
 # Download
  

@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=bash
-PKGVERSION=4.4
+PKGVERSION=5.1.8
 
 # Download:
 

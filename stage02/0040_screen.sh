@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=screen
-PKGVERSION=4.2.1
+PKGVERSION=4.9.0
 
 # Download:
 
@@ -21,7 +21,7 @@ tar xvzf ${SRCDIR}/${PKGNAME}-${PKGVERSION}.tar.gz
 # Patch
 
 cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
-install -m 0755 "${workdir}/patches/screen-4.2.1.configure" configure
+# install -m 0755 "${workdir}/patches/screen-4.2.1.configure" configure
 
 # Build and install
 
