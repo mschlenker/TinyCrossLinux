@@ -6,7 +6,16 @@
 source stage0n_variables
 
 PKGNAME=qemu-host
-PKGVERSION=2.12.1
+PKGVERSION=6.2.0
+
+# Qemu requires ninja
+
+if which ninja ; then
+	echo "Found Ninja, continuing..."
+else
+	echo "Please install Ninja."
+	exit 1
+fi
 
 # Download:
 

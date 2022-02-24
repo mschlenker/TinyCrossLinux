@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=bash
-PKGVERSION=5.1.8
+PKGVERSION=4.4.18
 
 # Download:
 
@@ -25,8 +25,13 @@ cd ${CLFS}/build/${PKGNAME}-${PKGVERSION}/${PKGNAME}-${PKGVERSION}
 
 # Build and install
 
-./configure --prefix=/usr --sysconfdir=/etc --host=${CLFS_TARGET} --without-bash-malloc
-make -j $( grep -c processor /proc/cpuinfo )
+./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--host=${CLFS_TARGET} \
+	--without-bash-malloc \
+	--with-curses=no \
+	--enable-static-link 
+make -j $( grep -c processor /proc/cpuinfo )  LDFLAGS=-all-static
 make install DESTDIR=${CLFS}/targetfs
 ${CLFS}/cross-tools/bin/${CLFS_TARGET}-strip ${CLFS}/targetfs/usr/bin/bash
 ln -sf /usr/bin/bash ${CLFS}/targetfs/bin/bash

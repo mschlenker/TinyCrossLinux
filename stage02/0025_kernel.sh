@@ -4,7 +4,7 @@ source stage01_variables
 source stage02_variables
  
 PKGNAME=linux
-PKGVERSION=5.15.19
+PKGVERSION=5.15.25
 MAJOR=5.15
 
 if which bc ; then

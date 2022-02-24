@@ -3,7 +3,7 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=libstdcplusplus
-PKGVERSION=11.2.0
+PKGVERSION=10.3.0
 
 # Prepare build:
 

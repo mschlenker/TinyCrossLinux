@@ -3,10 +3,17 @@ source stage0n_variables
 source stage01_variables
 
 PKGNAME=gcc-step1
-PKGVERSION=11.2.0
+PKGVERSION=10.3.0
 MPFR=4.1.0
 GMP=6.2.1
 MPC=1.2.1
+
+if which lzip ; then
+	echo "Found lzip, continuing..."
+else
+	echo "Please install lzip."
+	exit 1
+fi
 
 # Download:
 
